@@ -1,9 +1,6 @@
 package com.kamiltest.demo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,6 +15,8 @@ public class WorkerController {
     public WorkerController() {
         this.workers = new ArrayList<>();
         workers.add(new Worker(1L,"Kamil","Doe","Bialystok","Kurla street",new Date()));
+        workers.add(new Worker(2L,"Kamil","Doe","Bialystok","Kurla street",new Date()));
+        workers.add(new Worker(3L,"Kamil","Doe","Bialystok","Kurla street",new Date()));
     }
 
     @GetMapping("/getall")
@@ -28,6 +27,18 @@ public class WorkerController {
     @GetMapping("/getbyid")
     public Worker GeById(@RequestParam int index){
         Optional<Worker> option =  workers.stream().filter(element -> element.getId() == index).findFirst();
-        return option.get();
+        if(option.isPresent()){
+            return option.get();
+        }
+        return null;
     }
+    @PostMapping("/addworker")
+    public Worker AddWorker(@RequestBody Worker worker){
+        long id = this.workers.get(this.workers.size()-1).getId();
+        id++;
+        worker.setId(id);
+        this.workers.add(worker);
+        return worker;
+    }
+    //edit and delete 
 }
