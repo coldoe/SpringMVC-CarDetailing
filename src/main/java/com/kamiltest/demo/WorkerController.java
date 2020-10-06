@@ -25,7 +25,7 @@ public class WorkerController {
         return workers;
     }
 
-    @GetMapping()
+    @GetMapping("/getbyid")
     public Worker GeById(@RequestParam int index){
         Optional<Worker> option =  workers.stream().filter(element -> element.getId() == index).findFirst();
         return option.get();
