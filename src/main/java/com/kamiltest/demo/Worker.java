@@ -3,6 +3,7 @@ package com.kamiltest.demo;
 import javax.persistence.Entity;
 import java.util.Date;
 
+//add entity and check connection with database
 @Entity
 public class Worker {
     private long id;
