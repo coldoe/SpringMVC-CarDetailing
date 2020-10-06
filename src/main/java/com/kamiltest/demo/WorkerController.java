@@ -25,14 +25,14 @@ public class WorkerController {
     }
 
     @GetMapping("/getbyid")
-    public Worker GeById(@RequestParam int index){
+    public Worker GetById(@RequestParam int index){
         Optional<Worker> option =  workers.stream().filter(element -> element.getId() == index).findFirst();
         if(option.isPresent()){
             return option.get();
         }
         return null;
     }
-    @PostMapping("/addworker")
+    @PostMapping("/addWorker")
     public Worker AddWorker(@RequestBody Worker worker){
         long id = this.workers.get(this.workers.size()-1).getId();
         id++;
@@ -40,5 +40,13 @@ public class WorkerController {
         this.workers.add(worker);
         return worker;
     }
-    //edit and delete 
+    //edit
+//    @PutMapping("/editWorker")
+//    public
+
+    @DeleteMapping("/deleteWorker")
+    public boolean DeleteWorker(@RequestParam int index)
+    {
+        return this.workers.removeIf(w -> w.getId() == index);
+    }
 }

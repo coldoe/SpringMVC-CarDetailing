@@ -1,7 +1,9 @@
 package com.kamiltest.demo;
 
+import javax.persistence.Entity;
 import java.util.Date;
 
+@Entity
 public class Worker {
     private long id;
     private String name;
