@@ -1,35 +1,39 @@
-package com.kamiltest.demo;
+package com.kamiltest.demo.doa.model;
 
-import javax.persistence.Entity;
-import java.util.Date;
+import javax.persistence.*;
+import java.util.Calendar;
 
 //add entity and check connection with database
 @Entity
 public class Worker {
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private Long id;
     private String name;
     private String surname;
     private String City;
     private String Street;
-    private Date StartDate;
+    @Temporal(TemporalType.DATE)
+    private Calendar utilCalendar;
+//    e.setUtilCalendar(new GregorianCalendar(2019, 6, 18));
 
     public Worker() {
     }
 
-    public Worker(long id, String name, String surname, String city, String street, Date startDate) {
+    public Worker(Long id, String name, String surname, String city, String street, Calendar utilCalendar) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         City = city;
         Street = street;
-        StartDate = startDate;
+        this.utilCalendar = utilCalendar;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -65,11 +69,11 @@ public class Worker {
         Street = street;
     }
 
-    public Date getStartDate() {
-        return StartDate;
+    public Calendar getUtilCalendar() {
+        return utilCalendar;
     }
 
-    public void setStartDate(Date startDate) {
-        StartDate = startDate;
+    public void setUtilCalendar(Calendar utilCalendar) {
+        this.utilCalendar = utilCalendar;
     }
 }
