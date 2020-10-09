@@ -1,13 +1,14 @@
 package com.kamiltest.demo.doa.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
 public class Client {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @PrimaryKeyJoinColumn
     private Long Id;
     private String name;
     private String surname;
@@ -36,6 +37,9 @@ public class Client {
                 '}';
     }
 
+    //to prevent recursion
+    @JsonManagedReference
+//    @JsonBackReference
     public Car getCar() {
         return car;
     }

@@ -1,5 +1,7 @@
 package com.kamiltest.demo.doa.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,7 +12,7 @@ public class Car {
     private String mark;
     private String model;
     private int year;
-    @OneToOne
+    @OneToOne(targetEntity = Client.class)
     @PrimaryKeyJoinColumn
     private Client client;
 
@@ -67,7 +69,9 @@ public class Car {
     public void setYear(int year) {
         this.year = year;
     }
-
+    //to prevent recursion
+    @JsonBackReference
+//    @JsonManagedReference
     public Client getClient() {
         return client;
     }

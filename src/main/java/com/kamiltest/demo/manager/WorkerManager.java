@@ -1,6 +1,6 @@
 package com.kamiltest.demo.manager;
 
-import com.kamiltest.demo.doa.WorkerRepo;
+import com.kamiltest.demo.doa.Repo.WorkerRepo;
 import com.kamiltest.demo.doa.model.Worker;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;

@@ -1,4 +1,4 @@
-package com.kamiltest.demo.doa;
+package com.kamiltest.demo.doa.Repo;
 
 import com.kamiltest.demo.doa.model.Client;
 import org.springframework.data.repository.CrudRepository;
