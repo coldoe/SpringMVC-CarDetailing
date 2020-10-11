@@ -1,9 +1,8 @@
 package com.kamiltest.demo.doa.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.*;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Service {
@@ -16,6 +15,8 @@ public class Service {
     private String description;
     private int nettoPrice;
     private String additionalInfo;
+    @ManyToMany(mappedBy = "services")
+    private Set<Order> orders;
 
     public Service() {
     }
@@ -78,4 +79,22 @@ public class Service {
     public void setAdditionalInfo(String additionalInfo) {
         this.additionalInfo = additionalInfo;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Service service = (Service) o;
+        return nettoPrice == service.nettoPrice &&
+                Objects.equals(Id, service.Id) &&
+                Objects.equals(name, service.name) &&
+                Objects.equals(description, service.description) &&
+                Objects.equals(additionalInfo, service.additionalInfo) &&
+                Objects.equals(orders, service.orders);
+    }
+
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(Id, name, description, nettoPrice, additionalInfo, orders);
+//    }
 }
