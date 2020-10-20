@@ -6,7 +6,6 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
-import java.util.GregorianCalendar;
 import java.util.Optional;
 
 @Service
@@ -32,8 +31,8 @@ public class WorkerManager {
     @EventListener(ApplicationReadyEvent.class)
     public void fillDb(){
         //    e.setUtilCalendar(new GregorianCalendar(2019, 6, 18));
-        save((new Worker(1L,"Kamil","Doe","Bialystok","Kurla street",new GregorianCalendar())));
-        save((new Worker(2L,"Peter","Do","Bialystok","Do",new GregorianCalendar())));
+//        save((new Worker(1L,"Kamil","Doe","Bialystok","Kurla street",new GregorianCalendar())));
+//        save((new Worker(2L,"Peter","Do","Bialystok","Do",new GregorianCalendar())));
     }
 
 }
