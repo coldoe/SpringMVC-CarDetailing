@@ -10,7 +10,7 @@
     <h1 class="text-center">All cars that we have in database</h1>
 <div class="container">
     <div class="row justify-content-center">
-            <div class="col-sm-10">
+            <div class="col-sm-12">
                 <table class="table">
                     <thead>
                         <tr>
@@ -30,24 +30,25 @@
 
                         <tr class="text-center" th:each="car : ${cars}">
                             <td class="row">
-                                <span th:text="${car.Id}"></span>
+                                <span th:text="${car.getId()}"></span>
                             </td>
                             <td>
-                                <span th:text="${car.mark}"></span>
+                                <span th:text="${car.getMark()}"></span>
                             </td>
                             <td>
-                                <span th:text="${car.model}"></span>
+                                <span th:text="${car.getModel()}"></span>
                             </td>
                             <td>
-                                <span  th:text="${car.year}"></span>
+                                <span  th:text="${car.getYear()}"></span>
                             </td>
                             <td>
-                                <span th:if="${car.client}" th:text="${car.client.name} + ' ' + ${car.client.surname}"></span>
-                                <span th:if="${car.client == null}">No client yet</span>
+                                <!--+ ' clientID ' + ${car.client.ClientId} + ' carId ' + ${car.Id}-->
+                                <span th:if="${car.getClient()}" th:text="${car.client.name} + ' ' + ${car.client.surname}"></span>
+                                <span th:if="${car.getClient() == null}">No client yet</span>
                             </td>
                             <td>
-                                <span th:if="${car.client}" th:text="${car.client.contactNumber}"></span>
-                                <span th:if="${car.client == null}">No number</span>
+                                <span th:if="${car.getClient()}" th:text="${car.client.contactNumber}"></span>
+                                <span th:if="${car.getClient() == null}">No number</span>
                             </td>
                             <td>
                                 <!--<form th:method="get" th:action="@{|addcar/${task.Id}|}">-->

@@ -74,7 +74,6 @@ public class ClientManager {
             return null;
         }
     }
-    //find Client by car and return client
     public void deleteCarForClientByCarId(Long idCar)
     {
         Iterable<Client> clients = this.clientRepo.findAll();

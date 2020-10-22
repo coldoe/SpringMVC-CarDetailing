@@ -25,14 +25,14 @@ public class DemoApplication {
 		public void run(String... string) throws Exception {
 
 //			Client client = new Client();
-//			client.setId(1L);
+//			client.setId(100L);
 //			client.setContactNumber("997");
 //			client.setName("client00");
 //			client.setSurname("sryname");
 //
 //			Car car = new Car();
-//			car.setId(1L);
-//			car.setMark("saab");
+//			car.setId(2L);
+//			car.setMark("test");
 //			car.setModel("9-3");
 //			car.setYear(2004);
 //
@@ -41,9 +41,6 @@ public class DemoApplication {
 //
 ////			carRepo.save(car);
 //			repo.save(client);
-//
-//			repo.findAll().forEach(p -> System.out.println(p.toString()));
-
 		}
 	}
 }
