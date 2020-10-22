@@ -5,7 +5,10 @@ import com.kamiltest.demo.doa.model.Car;
 import com.kamiltest.demo.doa.model.Client;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class ClientManager {
@@ -70,5 +73,14 @@ public class ClientManager {
             System.out.println(ex.toString());
             return null;
         }
+    }
+    public void deleteCarForClientByCarId(Long idCar)
+    {
+        Iterable<Client> clients = this.clientRepo.findAll();
+        List<Client> listClientWithCar = StreamSupport.stream(clients.spliterator(),false).
+                                        filter(c -> Long.compare(c.getCar().getId() ,idCar) == 0).collect(Collectors.toList());
+        Client client = listClientWithCar.get(0);
+        client.setCar(null);
+        this.clientRepo.save(client);
     }
 }
