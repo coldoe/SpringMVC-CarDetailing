@@ -14,7 +14,6 @@
 <div class="container">
     <div class="row-sm-8">
         <div class="col">
-
             <form th:action="@{/api/car/addcar}" th:object="${car}" method="post">
                 <div class="form-group">
                     <label >Mark</label>
@@ -30,11 +29,7 @@
                     <label >year(int)</label>
                     <input type="number" class="form-control"  placeholder="year of the car" th:field="*{year}">
                 </div>
-                <!--can be null ?-->
-                <!--<div class="form-group">-->
-                    <!--<label>Client</label>-->
-                    <!--<input type="datetime-local" class="form-control"  placeholder="" th:field="*{endDate}">-->
-                <!--</div>-->
+
                 <button type="submit" class="btn btn-primary">Submit Car</button>
             </form>
 
