@@ -59,13 +59,12 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <!--th:action-->
-                                    <form th:method="get">
+                                    <form th:method="get" th:action="@{/api/client/updateclient/} + ${client.Id}">
                                         <input type="submit" value="PUT Client" class="btn btn-warning btn-block" />
                                     </form>
                                 </div>
                                 <div class="col-md-6 xs-mxy-2">
-                                    <!--th:action-->
-                                    <form th:method="delete">
+                                    <form th:method="delete" th:action="@{/api/client/deleteclient/} + ${client.Id}">
                                         <input type="submit" value="DEL Client" class="btn btn-danger btn-block" />
                                     </form>
                                 </div>
@@ -73,7 +72,6 @@
 
                             <div class="row" style="margin-top: 7px;">
                                 <div class="col-md-6">
-                                    <!--"@{/api/car/updatecar/} + ${carToUpdate.Id}"-->
                                     <span th:if="${client.getCar() != null}">
                                         <form th:method="get" th:action="@{/api/car/updatecar/} + ${client.car.Id}">
                                             <input type="submit" value="PUT Car" class="btn btn-warning btn-block"/>
