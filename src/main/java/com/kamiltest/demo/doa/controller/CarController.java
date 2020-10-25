@@ -45,13 +45,14 @@ public class CarController {
     @DeleteMapping("/deletecar/{id}")
     public String deleteCar(@PathVariable Long id)
     {
+        //i can look where it comes from ?
         Optional<Car> carToDelete = this.carManager.findCarById(id);
         if(carToDelete.isPresent())
         {
             if(carToDelete.get().getClient() != null)
             {
                 this.clientManager.deleteCarForClientByCarId(id);
-                this.carManager.deleteCarById(id);
+//                this.carManager.deleteCarById(id);
             }
             else{
             this.carManager.deleteCarById(id);
