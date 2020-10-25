@@ -42,7 +42,7 @@ public class CarController {
     }
     //delete car
     //if car has client it wont delete why?
-    @PostMapping("/deletecar/{id}")
+    @DeleteMapping("/deletecar/{id}")
     public String deleteCar(@PathVariable Long id)
     {
         Optional<Car> carToDelete = this.carManager.findCarById(id);
