@@ -59,5 +59,22 @@ public class CarController {
         }
         return "redirect:/api/car/getallcars";
     }
+    @GetMapping("/updatecar/{id}")
+    public String getCarToUpdate(@PathVariable Long id, Model model)
+    {
+        Optional<Car> carToUpdate = this.carManager.findCarById(id);
+        if(carToUpdate.isPresent()){
+            //in the future probably need to also pas
+            model.addAttribute("carToUpdate", carToUpdate.get());
+            return "updateCar";
+        }
+        return "redirect:/api/car/getallcars";
+    }
+    @PutMapping("/updatecar/{id}")
+    public String updateCarFromView(@ModelAttribute("carToUpdate")Car car)
+    {
+        this.carManager.updateCar(car);
+        return "redirect:/api/car/getallcars";
+    }
 
 }
