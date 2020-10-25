@@ -14,11 +14,11 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th class="text-center" scope="col" >ID CLIENT</th>
+                    <!--<th class="text-center" scope="col" >ID CLIENT</th>-->
                     <th class="text-center" scope="col">NAME</th>
                     <th class="text-center" scope="col">SURNAME</th>
                     <th class="text-center" scope="col">CONTACT NUMBER</th>
-                    <th class="text-center" scope="col">ID CAR</th>
+                    <!--<th class="text-center" scope="col">ID CAR</th>-->
                     <th class="text-center" scope="col">CAR</th>
                     <th class="text-center" scope="col">CAR YEAR</th>
                     <th class="text-center" scope="col" style="width: 30%">ACTIONS</th>
@@ -30,9 +30,9 @@
                 </tr>
 
                 <tr class="text-center" th:each="client : ${clients}">
-                    <td class="row">
-                        <span th:text="${client.getId()}"></span>
-                    </td>
+                    <!--<td class="row">-->
+                        <!--<span th:text="${client.getId()}"></span>-->
+                    <!--</td>-->
                     <td>
                         <span th:text="${client.getName()}"></span>
                     </td>
@@ -42,10 +42,10 @@
                     <td>
                         <span  th:text="${client.getContactNumber()}"></span>
                     </td>
-                    <td>
-                        <span  th:if="${client.getCar() != null}" th:text="${client.getCar().getId()}"></span>
-                        <span th:if="${client.getCar() == null}">No car</span>
-                    </td>
+                    <!--<td>-->
+                        <!--<span  th:if="${client.getCar() != null}" th:text="${client.getCar().getId()}"></span>-->
+                        <!--<span th:if="${client.getCar() == null}">No car</span>-->
+                    <!--</td>-->
                     <td>
                         <span th:if="${client.getCar()}" th:text="${client.car.mark + ' ' + client.car.model}"></span>
                         <span th:if="${client.getCar() == null}">No car</span>
@@ -57,40 +57,40 @@
                     <td>
                         <div class="container">
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-md-6">
                                     <!--th:action-->
                                     <form th:method="get">
-                                        <input type="submit" value="Update Client" class="btn btn-warning" />
+                                        <input type="submit" value="PUT Client" class="btn btn-warning btn-block" />
                                     </form>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-md-6 xs-mxy-2">
                                     <!--th:action-->
                                     <form th:method="delete">
-                                        <input type="submit" value="Delete Client" class="btn btn-danger" />
+                                        <input type="submit" value="DEL Client" class="btn btn-danger btn-block" />
                                     </form>
                                 </div>
                             </div>
 
                             <div class="row" style="margin-top: 7px;">
-                                <div class="col-sm-6">
+                                <div class="col-md-6">
                                     <!--"@{/api/car/updatecar/} + ${carToUpdate.Id}"-->
                                     <span th:if="${client.getCar() != null}">
                                         <form th:method="get" th:action="@{/api/car/updatecar/} + ${client.car.Id}">
-                                            <input type="submit" value="Update Car" class="btn btn-warning btn-sm"/>
+                                            <input type="submit" value="PUT Car" class="btn btn-warning btn-block"/>
                                         </form>
                                     </span>
                                     <span th:if="${client.getCar() == null}">
-                                        <span>No car</span>
+                                        <span>-</span>
                                     </span>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-md-6 xs-mxy-2">
                                     <span th:if="${client.getCar() != null}">
                                         <form th:method="delete" th:action="@{/api/car/deletecar/} + ${client.car.Id}">
-                                            <input type="submit" value="Delete Car" class="btn btn-danger btn-sm" />
+                                            <input type="submit" value="DEL Car" class="btn btn-danger btn-block w-100" />
                                         </form>
                                     </span>
                                     <span th:if="${client.getCar() == null}">
-                                        <span>No car</span>
+                                        <span>-</span>
                                     </span>
                                 </div>
                             </div>
