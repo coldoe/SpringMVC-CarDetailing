@@ -1,10 +1,14 @@
-Project using spring, lets see
-hello from computer branch
+Project using:
+- Java 11
+- Spring
+- Hibernate
+- MySQL
+- Thymeleaf
+- Bootstrap
 
 TODO:
-
-Classes:
-- worker with set of orders
-
-Hibernate (relations):
-- worker order 1-m or m-m ? dunno
+- controllers and views
+- spring security - 3 groups:
+  user => ?
+  mod => ?
+  admin => ?
