@@ -6,6 +6,7 @@ import com.kamiltest.demo.doa.model.Client;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -76,11 +77,20 @@ public class ClientManager {
     }
     public void deleteCarForClientByCarId(Long idCar)
     {
+        Optional<Car> car = this.carManager.findCarById(idCar);
         Iterable<Client> clients = this.clientRepo.findAll();
-        List<Client> listClientWithCar = StreamSupport.stream(clients.spliterator(),false).
-                                        filter(c -> Long.compare(c.getCar().getId() ,idCar) == 0).collect(Collectors.toList());
-        Client client = listClientWithCar.get(0);
-        client.setCar(null);
-        this.clientRepo.save(client);
+
+        if(car.isPresent()){
+            List<Client> clientHasCar =
+                    StreamSupport.stream(clients.spliterator(),false)
+                    .filter(c -> Objects.nonNull(c.getCar()))
+                    .filter(c1 -> c1.getCar().getId() == idCar)
+                    .collect(Collectors.toList());
+
+            Client client = clientHasCar.get(0);
+            client.setCar(null);
+            this.clientRepo.save(client);
+            this.carManager.deleteCarById(car.get().getId());
+        }
     }
 }

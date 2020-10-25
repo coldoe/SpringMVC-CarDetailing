@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GET ALL CLIENTS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+
+<body>
+<h1 class="text-center">All Clients</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-12">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th class="text-center" scope="col" >ID CLIENT</th>
+                    <th class="text-center" scope="col">NAME</th>
+                    <th class="text-center" scope="col">SURNAME</th>
+                    <th class="text-center" scope="col">CONTACT NUMBER</th>
+                    <th class="text-center" scope="col">ID CAR</th>
+                    <th class="text-center" scope="col">CAR</th>
+                    <th class="text-center" scope="col">CAR YEAR</th>
+                    <th class="text-center" scope="col" style="width: 30%">ACTIONS</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${clients.empty}">
+                    <th class="scope">No clients to show</th>
+                </tr>
+
+                <tr class="text-center" th:each="client : ${clients}">
+                    <td class="row">
+                        <span th:text="${client.getId()}"></span>
+                    </td>
+                    <td>
+                        <span th:text="${client.getName()}"></span>
+                    </td>
+                    <td>
+                        <span th:text="${client.getSurname()}"></span>
+                    </td>
+                    <td>
+                        <span  th:text="${client.getContactNumber()}"></span>
+                    </td>
+                    <td>
+                        <span  th:if="${client.getCar() != null}" th:text="${client.getCar().getId()}"></span>
+                        <span th:if="${client.getCar() == null}">No car</span>
+                    </td>
+                    <td>
+                        <span th:if="${client.getCar()}" th:text="${client.car.mark + ' ' + client.car.model}"></span>
+                        <span th:if="${client.getCar() == null}">No car</span>
+                    </td>
+                    <td>
+                        <span th:if="${client.getCar()}" th:text="${client.car.year}"></span>
+                        <span th:if="${client.getCar() == null}">No car</span>
+                    </td>
+                    <td>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <!--th:action-->
+                                    <form th:method="get">
+                                        <input type="submit" value="Update Client" class="btn btn-warning" />
+                                    </form>
+                                </div>
+                                <div class="col-sm-6">
+                                    <!--th:action-->
+                                    <form th:method="delete">
+                                        <input type="submit" value="Delete Client" class="btn btn-danger" />
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin-top: 7px;">
+                                <div class="col-sm-6">
+                                    <!--"@{/api/car/updatecar/} + ${carToUpdate.Id}"-->
+                                    <span th:if="${client.getCar() != null}">
+                                        <form th:method="get" th:action="@{/api/car/updatecar/} + ${client.car.Id}">
+                                            <input type="submit" value="Update Car" class="btn btn-warning btn-sm"/>
+                                        </form>
+                                    </span>
+                                    <span th:if="${client.getCar() == null}">
+                                        <span>No car</span>
+                                    </span>
+                                </div>
+                                <div class="col-sm-6">
+                                    <span th:if="${client.getCar() != null}">
+                                        <form th:method="delete" th:action="@{/api/car/deletecar/} + ${client.car.Id}">
+                                            <input type="submit" value="Delete Car" class="btn btn-danger btn-sm" />
+                                        </form>
+                                    </span>
+                                    <span th:if="${client.getCar() == null}">
+                                        <span>No car</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</html>
