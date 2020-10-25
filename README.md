@@ -12,3 +12,5 @@ TODO:
   user => ?
   mod => ?
   admin => ?
+
+  - getAllClients => buttons colapse on small view
