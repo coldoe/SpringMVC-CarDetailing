@@ -35,4 +35,10 @@ public class CarManager {
             return false;
         }
     }
+
+    //need that to assign car to client
+    public Iterable<Car> findCarsThatHaveNoOwner()
+    {
+        return this.carRepo.allCarsThatHaveNoOwner();
+    }
 }
