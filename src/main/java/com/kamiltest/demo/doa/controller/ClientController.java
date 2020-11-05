@@ -51,4 +51,18 @@ public class ClientController {
         this.clientManager.delete(id);
         return "redirect:/api/client/getallclients";
     }
+
+    @GetMapping("/addclient")
+    public String addClientGet(Model model)
+    {
+        model.addAttribute("clientToAdd",new Client());
+        return "addClient";
+    }
+
+    @PostMapping("/addclient")
+    public String addClientPost(@ModelAttribute("clientToAdd")Client client)
+    {
+        this.clientManager.saveClient(client);
+        return "redirect:/api/client/getallclients";
+    }
 }

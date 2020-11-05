@@ -28,31 +28,28 @@ public class CarController {
         model.addAttribute("cars",cars);
         return "getAllCars";
     }
-    //add car
+
     @GetMapping("/addcar")
     public String addCar(Model model){
         model.addAttribute("car",new Car());
         return "addCar";
     }
-    //that should be also update?
+
     @PostMapping("/addcar")
     public String addCarPost(@ModelAttribute("car")Car car){
         this.carManager.updateCar(car);
         return "redirect:/api/car/getallcars";
     }
-    //delete car
-    //if car has client it wont delete why?
+
     @DeleteMapping("/deletecar/{id}")
     public String deleteCar(@PathVariable Long id)
     {
-        //i can look where it comes from ?
         Optional<Car> carToDelete = this.carManager.findCarById(id);
         if(carToDelete.isPresent())
         {
             if(carToDelete.get().getClient() != null)
             {
                 this.clientManager.deleteCarForClientByCarId(id);
-//                this.carManager.deleteCarById(id);
             }
             else{
             this.carManager.deleteCarById(id);
@@ -65,7 +62,6 @@ public class CarController {
     {
         Optional<Car> carToUpdate = this.carManager.findCarById(id);
         if(carToUpdate.isPresent()){
-            //in the future probably need to also pas
             model.addAttribute("carToUpdate", carToUpdate.get());
             return "updateCar";
         }
