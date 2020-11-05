@@ -12,10 +12,10 @@
     <div class="row justify-content-center">
         <div class="col-sm-12">
             <form th:action="@{/api/car/updatecar/} + ${carToUpdate.Id}" th:object="${carToUpdate}" th:method="put">
-                <div class="form-group">
-                    <label >Id</label>
-                    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="" th:field="*{Id}" th:text="*{Id}">
-                </div>
+                <!--<div class="form-group">-->
+                    <!--<label >Id</label>-->
+                    <!--<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="" th:field="*{Id}" th:text="*{Id}">-->
+                <!--</div>-->
                 <div class="form-group">
                     <label >Mark</label>
                     <input type="text" class="form-control" a placeholder="Enter car's mark" th:field="*{mark}" th:text="*{mark}">
