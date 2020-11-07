@@ -31,7 +31,7 @@
 
                 <tr class="text-center" th:each="client : ${clients}">
                     <!--<td class="row">-->
-                        <!--<span th:text="${client.getId()}"></span>-->
+                    <!--<span th:text="${client.getId()}"></span>-->
                     <!--</td>-->
                     <td>
                         <span th:text="${client.getName()}"></span>
@@ -43,8 +43,8 @@
                         <span  th:text="${client.getContactNumber()}"></span>
                     </td>
                     <!--<td>-->
-                        <!--<span  th:if="${client.getCar() != null}" th:text="${client.getCar().getId()}"></span>-->
-                        <!--<span th:if="${client.getCar() == null}">No car</span>-->
+                    <!--<span  th:if="${client.getCar() != null}" th:text="${client.getCar().getId()}"></span>-->
+                    <!--<span th:if="${client.getCar() == null}">No car</span>-->
                     <!--</td>-->
                     <td>
                         <span th:if="${client.getCar()}" th:text="${client.car.mark + ' ' + client.car.model}"></span>

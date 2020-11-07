@@ -26,13 +26,13 @@ public class CarController {
     public String getAllCars(Model model){
         Iterable<Car> cars = this.carManager.findAll();
         model.addAttribute("cars",cars);
-        return "getAllCars";
+        return "Car/getAllCars";
     }
 
     @GetMapping("/addcar")
     public String addCar(Model model){
         model.addAttribute("car",new Car());
-        return "addCar";
+        return "Car/addCar";
     }
 
     @PostMapping("/addcar")
@@ -63,7 +63,7 @@ public class CarController {
         Optional<Car> carToUpdate = this.carManager.findCarById(id);
         if(carToUpdate.isPresent()){
             model.addAttribute("carToUpdate", carToUpdate.get());
-            return "updateCar";
+            return "Car/updateCar";
         }
         return "redirect:/api/car/getallcars";
     }
