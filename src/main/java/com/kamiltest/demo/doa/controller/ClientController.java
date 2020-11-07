@@ -1,6 +1,9 @@
 package com.kamiltest.demo.doa.controller;
 
+import com.kamiltest.demo.doa.model.Car;
 import com.kamiltest.demo.doa.model.Client;
+import com.kamiltest.demo.doa.viewModels.viewModelCarClient;
+import com.kamiltest.demo.manager.CarManager;
 import com.kamiltest.demo.manager.ClientManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,16 +16,18 @@ import java.util.Optional;
 @RequestMapping("/api/client/")
 public class ClientController {
     private ClientManager clientManager;
+    private CarManager carManager;
 
     @Autowired
-    public ClientController(ClientManager clientManager) {
+    public ClientController(ClientManager clientManager, CarManager carManager) {
         this.clientManager = clientManager;
+        this.carManager = carManager;
     }
 
     @GetMapping("/getallclients")
     public String GetAll(Model model){
         model.addAttribute("clients",this.clientManager.findAll());
-        return "getAllClients";
+        return "Client/getAllClients";
     }
     //maybe add something like show details
     @GetMapping("/getbyid")
@@ -35,7 +40,7 @@ public class ClientController {
         Optional<Client> clientToUpdate = this.clientManager.findById(id);
         if(clientToUpdate.isPresent()){
             model.addAttribute("clientToUpdate",clientToUpdate.get());
-            return "updateClient";
+            return "Client/updateClient";
         }
         return "redirect:/api/client/getallclients";
     }
@@ -56,7 +61,7 @@ public class ClientController {
     public String addClientGet(Model model)
     {
         model.addAttribute("clientToAdd",new Client());
-        return "addClient";
+        return "Client/addClient";
     }
 
     @PostMapping("/addclient")
@@ -66,4 +71,32 @@ public class ClientController {
         return "redirect:/api/client/getallclients";
     }
     //assign car to client
+    @GetMapping("/assigncartoclient")
+    public String assignCarToClientGetMethod(Model model)
+    {
+        model.addAttribute("cars",this.carManager.findCarsThatHaveNoOwner());
+        model.addAttribute("clients",this.clientManager.findAll());
+
+
+//        model.addAttribute("clientToPass",1L);
+//        model.addAttribute("carToPass",1L);
+        model.addAttribute("viewmodel",new viewModelCarClient());
+
+        return "Client/assignCarToClient";
+    }
+    //request param somehow?
+    @PostMapping("/assigncartoclient")
+    public String assignCarToClientPostMethod(@ModelAttribute("viewmodel")viewModelCarClient idx)
+    {
+        Optional<Client> client = this.clientManager.findById(idx.getIdClient());
+        Optional<Car> car = this.carManager.findCarById(idx.getIdCar());
+        if(client.isPresent() && car.isPresent())
+        {
+            Client clientToSave = client.get();
+            Car carToSave = car.get();
+            clientToSave.setCar(carToSave);
+            this.clientManager.saveClient(clientToSave);
+        }
+        return "redirect:/api/client/assigncartoclient";
+    }
 }
