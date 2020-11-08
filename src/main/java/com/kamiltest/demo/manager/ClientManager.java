@@ -93,4 +93,21 @@ public class ClientManager {
             this.carManager.deleteCarById(car.get().getId());
         }
     }
+    public void addCarForClient(Long idClient,Long idCar)
+    {
+        Optional<Client> client = findById(idClient);
+        Optional<Car> car = this.carManager.findCarById(idCar);
+        if(client.isPresent() && car.isPresent())
+        {
+            Client clientToSave = client.get();
+            Car carToSave = car.get();
+            clientToSave.setCar(carToSave);
+            saveClient(clientToSave);
+        }
+    }
+
+    public Iterable<Client> findClientsWithoutCars()
+    {
+        return this.clientRepo.getAllClientsThatHaveNoCars();
+    }
 }

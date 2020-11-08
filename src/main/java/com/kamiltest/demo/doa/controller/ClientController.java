@@ -1,6 +1,5 @@
 package com.kamiltest.demo.doa.controller;
 
-import com.kamiltest.demo.doa.model.Car;
 import com.kamiltest.demo.doa.model.Client;
 import com.kamiltest.demo.doa.viewModels.viewModelCarClient;
 import com.kamiltest.demo.manager.CarManager;
@@ -75,28 +74,15 @@ public class ClientController {
     public String assignCarToClientGetMethod(Model model)
     {
         model.addAttribute("cars",this.carManager.findCarsThatHaveNoOwner());
-        model.addAttribute("clients",this.clientManager.findAll());
-
-
-//        model.addAttribute("clientToPass",1L);
-//        model.addAttribute("carToPass",1L);
+        model.addAttribute("clients",this.clientManager.findClientsWithoutCars());
         model.addAttribute("viewmodel",new viewModelCarClient());
-
         return "Client/assignCarToClient";
     }
-    //request param somehow?
     @PostMapping("/assigncartoclient")
-    public String assignCarToClientPostMethod(@ModelAttribute("viewmodel")viewModelCarClient idx)
+    public String assignCarToClientPostMethod(
+            @ModelAttribute("viewmodel")viewModelCarClient idx)
     {
-        Optional<Client> client = this.clientManager.findById(idx.getIdClient());
-        Optional<Car> car = this.carManager.findCarById(idx.getIdCar());
-        if(client.isPresent() && car.isPresent())
-        {
-            Client clientToSave = client.get();
-            Car carToSave = car.get();
-            clientToSave.setCar(carToSave);
-            this.clientManager.saveClient(clientToSave);
-        }
+        this.clientManager.addCarForClient(idx.getIdClient(),idx.getIdCar());
         return "redirect:/api/client/assigncartoclient";
     }
 }
