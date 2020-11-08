@@ -14,16 +14,19 @@
                     <div class="form-group">
                         <label >Name</label>
                         <input type="text" class="form-control" a placeholder="Name" th:field="*{name}" th:text="*{name}">
+                        <span class="text-danger" th:errors="*{name}"></span>
                     </div>
                     <div class="form-group">
                         <label >Surname</label>
                         <input type="text" class="form-control" a placeholder="Surname" th:field="*{surname}" th:text="*{surname}">
+                        <span class="text-danger" th:errors="*{surname}"></span>
                     </div>
                     <div class="form-group">
                         <label >Contact Number</label>
                         <input type="text" class="form-control"  placeholder="Contact Number" th:field="*{contactNumber}" th:text="*{contactNumber}">
+                        <span class="text-danger" th:errors="*{contactNumber}"></span>
                     </div>
-                    <button type="submit" class="btn btn-primary">Update Car</button>
+                    <button type="submit" class="btn btn-primary">Update Client</button>
                 </form>
             </div>
         </div>

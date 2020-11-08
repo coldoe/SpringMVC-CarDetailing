@@ -1,12 +1,16 @@
 package com.kamiltest.demo.doa.Repo;
 
 import com.kamiltest.demo.doa.model.Client;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
+
 @Repository
 public interface ClientRepo extends CrudRepository<Client,Long> {
-//    https://www.baeldung.com/spring-data-jpa-query
-//    @Query("SELECT u FROM User u WHERE u.status = 1")
-//    Collection<User> findAllActiveUsers();
+    @Query(value = "select *\n" +
+            " from client c\n" +
+            " where c.car_id is null;",nativeQuery = true)
+    Collection<Client> getAllClientsThatHaveNoCars();
 }

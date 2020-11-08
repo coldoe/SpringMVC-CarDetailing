@@ -18,16 +18,19 @@
                 <div class="form-group">
                     <label >Mark</label>
                     <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter mark of the car" th:field="*{mark}">
+                    <span class="text-danger" th:errors="*{mark}"></span>
                 </div>
 
                 <div class="form-group ">
                     <label>Model</label>
                     <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter model of the car" th:field="*{model}">
+                    <span class="text-danger" th:errors="*{model}"></span>
                 </div>
 
                 <div class="form-group">
                     <label >year(int)</label>
                     <input type="number" class="form-control"  placeholder="year of the car" th:field="*{year}">
+                    <span class="text-danger" th:errors="*{year}"></span>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit Car</button>
