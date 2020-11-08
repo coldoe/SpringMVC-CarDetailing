@@ -21,12 +21,13 @@ public class Service {
     public Service() {
     }
 
-    public Service(Long id, String name, String description, int nettoPrice, String additionalInfo) {
+    public Service(Long id, String name, String description, int nettoPrice, String additionalInfo, Set<Order> orders) {
         Id = id;
         this.name = name;
         this.description = description;
         this.nettoPrice = nettoPrice;
         this.additionalInfo = additionalInfo;
+        this.orders = orders;
     }
 
     @Override
