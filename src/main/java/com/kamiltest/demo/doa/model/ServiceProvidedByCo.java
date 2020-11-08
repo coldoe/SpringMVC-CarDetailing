@@ -1,27 +1,44 @@
 package com.kamiltest.demo.doa.model;
 
 import javax.persistence.*;
-import java.util.Objects;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
-public class Service {
-    @javax.persistence.Id
+public class ServiceProvidedByCo {
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @PrimaryKeyJoinColumn
     private Long Id;
 
+    @NotNull(message = "Required")
+    @Size(min = 3, max = 255, message = "It must be between 3 and 255 characters")
     private String name;
+
+    @NotNull(message = "Required")
+    @Size(min = 3, max = 255, message = "It must be between 3 and 255 characters")
     private String description;
+
+    @NotNull(message = "Required")
+    @Size(min = 3, max = 255, message = "It must be between 3 and 255 characters")
     private int nettoPrice;
+
+    @NotNull(message = "Required")
+    @Size(min = 3, max = 255, message = "It must be between 3 and 255 characters")
     private String additionalInfo;
-    @ManyToMany(mappedBy = "services")
+
+    @NotNull(message = "Required")
+    @Size(min = 3, max = 255, message = "It must be between 3 and 255 characters")
+    @ManyToMany(mappedBy = "servicesProvidedByCo")
     private Set<Order> orders;
 
-    public Service() {
+    public ServiceProvidedByCo() {
     }
 
-    public Service(Long id, String name, String description, int nettoPrice, String additionalInfo, Set<Order> orders) {
+    public ServiceProvidedByCo(Long id, String name,
+                               String description, int nettoPrice,
+                               String additionalInfo, Set<Order> orders) {
         Id = id;
         this.name = name;
         this.description = description;
@@ -32,12 +49,13 @@ public class Service {
 
     @Override
     public String toString() {
-        return "Service{" +
+        return "ServiceProvidedByCo{" +
                 "Id=" + Id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", nettoPrice=" + nettoPrice +
                 ", additionalInfo='" + additionalInfo + '\'' +
+                ", orders=" + orders +
                 '}';
     }
 
@@ -81,21 +99,11 @@ public class Service {
         this.additionalInfo = additionalInfo;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Service service = (Service) o;
-        return nettoPrice == service.nettoPrice &&
-                Objects.equals(Id, service.Id) &&
-                Objects.equals(name, service.name) &&
-                Objects.equals(description, service.description) &&
-                Objects.equals(additionalInfo, service.additionalInfo) &&
-                Objects.equals(orders, service.orders);
+    public Set<Order> getOrders() {
+        return orders;
     }
 
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(Id, name, description, nettoPrice, additionalInfo, orders);
-//    }
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
 }
