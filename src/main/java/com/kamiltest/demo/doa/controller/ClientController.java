@@ -7,8 +7,10 @@ import com.kamiltest.demo.manager.ClientManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -45,7 +47,12 @@ public class ClientController {
     }
 
     @PutMapping("/updateclient/{id}")
-    public String updateClientToDatabase(@ModelAttribute("clientToUpdate")Client client){
+    public String updateClientToDatabase(@Valid @ModelAttribute("clientToUpdate")Client client,
+                                         BindingResult result){
+        if(result.hasErrors())
+        {
+            return "Client/updateClient";
+        }
         this.clientManager.saveClient(client);
         return "redirect:/api/client/getallclients";
     }
@@ -64,12 +71,17 @@ public class ClientController {
     }
 
     @PostMapping("/addclient")
-    public String addClientPost(@ModelAttribute("clientToAdd")Client client)
+    public String addClientPost(@Valid @ModelAttribute("clientToAdd")Client client,
+                                BindingResult result)
     {
+        if(result.hasErrors())
+        {
+            return "Client/addClient";
+        }
         this.clientManager.saveClient(client);
         return "redirect:/api/client/getallclients";
     }
-    //assign car to client
+
     @GetMapping("/assigncartoclient")
     public String assignCarToClientGetMethod(Model model)
     {
