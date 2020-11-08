@@ -28,7 +28,7 @@ public class ClientController {
         model.addAttribute("clients",this.clientManager.findAll());
         return "Client/getAllClients";
     }
-    //maybe add something like show details
+
     @GetMapping("/getbyid")
     public Optional<Client> GetById(@RequestParam Long index){
         return this.clientManager.findById(index);

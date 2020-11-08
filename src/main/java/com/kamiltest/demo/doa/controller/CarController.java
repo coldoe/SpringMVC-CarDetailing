@@ -6,8 +6,10 @@ import com.kamiltest.demo.manager.ClientManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -36,9 +38,17 @@ public class CarController {
     }
 
     @PostMapping("/addcar")
-    public String addCarPost(@ModelAttribute("car")Car car){
-        this.carManager.updateCar(car);
-        return "redirect:/api/car/getallcars";
+    public String addCarPost(@Valid @ModelAttribute("car")Car car,
+                             BindingResult result){
+        if(result.hasErrors())
+        {
+            return "Car/addcar";
+        }
+        else
+        {
+            this.carManager.updateCar(car);
+            return "redirect:/api/car/getallcars";
+        }
     }
 
     @DeleteMapping("/deletecar/{id}")
