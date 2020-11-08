@@ -75,9 +75,4 @@ public class Order {
                 Objects.equals(client, order.client) &&
                 Objects.equals(services, order.services);
     }
-
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(Id, client, services);
-//    }
 }

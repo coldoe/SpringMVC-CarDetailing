@@ -20,7 +20,8 @@
                     <div class="dropdown">
                         <div th:if="${clients != null}">
                             <select class="form-control" id="exampleFormControlSelect1" th:field="*{idClient}" name="client">
-                                <option th:each="client : ${clients}" th:value="${client.Id}" th:text="${client.getName()}"></option>
+                                <option th:each="client : ${clients}" th:value="${client.Id}"
+                                        th:text="${client.getName()}+' '+${client.surname}+' '+${client.contactNumber}"></option>
                             </select>
                         </div>
                     </div>
@@ -31,7 +32,8 @@
                     <div class="dropdown">
                         <div th:if="${cars != null}">
                             <select class="form-control" id="exampleFormControlSelect2" th:field="*{idCar}" name="car">
-                                <option th:each="car : ${cars}" th:value="${car.Id}" th:text="${car.mark}"></option>
+                                <option th:each="car : ${cars}" th:value="${car.Id}"
+                                        th:text="${car.mark}+' '+${car.model}+' '+${car.year}"></option>
                             </select>
                         </div>
                     </div>
