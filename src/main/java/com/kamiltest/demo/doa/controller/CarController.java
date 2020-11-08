@@ -78,8 +78,13 @@ public class CarController {
         return "redirect:/api/car/getallcars";
     }
     @PutMapping("/updatecar/{id}")
-    public String updateCarFromView(@ModelAttribute("carToUpdate")Car car)
+    public String updateCarFromView(@Valid @ModelAttribute("carToUpdate")Car car,
+                                    BindingResult result)
     {
+        if(result.hasErrors())
+        {
+            return "Car/updateCar";
+        }
         this.carManager.updateCar(car);
         return "redirect:/api/car/getallcars";
     }

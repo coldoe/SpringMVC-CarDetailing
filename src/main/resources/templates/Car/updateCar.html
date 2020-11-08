@@ -12,21 +12,20 @@
     <div class="row justify-content-center">
         <div class="col-sm-12">
             <form th:action="@{/api/car/updatecar/} + ${carToUpdate.Id}" th:object="${carToUpdate}" th:method="put">
-                <!--<div class="form-group">-->
-                    <!--<label >Id</label>-->
-                    <!--<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="" th:field="*{Id}" th:text="*{Id}">-->
-                <!--</div>-->
                 <div class="form-group">
                     <label >Mark</label>
-                    <input type="text" class="form-control" a placeholder="Enter car's mark" th:field="*{mark}" th:text="*{mark}">
+                    <input type="text" class="form-control" a placeholder="Enter car's mark" th:field="*{mark}">
+                    <span class="text-danger" th:errors="*{mark}"></span>
                 </div>
                 <div class="form-group">
                     <label >Model</label>
-                    <input type="text" class="form-control" a placeholder="Enter car's model" th:field="*{model}" th:text="*{model}">
+                    <input type="text" class="form-control" a placeholder="Enter car's model" th:field="*{model}">
+                    <span class="text-danger" th:errors="*{model}"></span>
                 </div>
                 <div class="form-group">
                     <label >Year</label>
-                    <input type="number" class="form-control"  placeholder="Car's year" th:field="*{year}" th:text="*{year}">
+                    <input type="number" class="form-control"  placeholder="Car's year" th:field="*{year}">
+                    <span class="text-danger" th:errors="*{year}"></span>
                 </div>
                 <button type="submit" class="btn btn-primary">Update Car</button>
             </form>
