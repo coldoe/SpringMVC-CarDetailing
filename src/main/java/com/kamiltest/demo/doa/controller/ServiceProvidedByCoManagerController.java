@@ -17,7 +17,6 @@ public class ServiceProvidedByCoManagerController {
     private ServiceProvidedByCoManager serviceProvidedByCoManager;
 
     @Autowired
-
     public ServiceProvidedByCoManagerController(ServiceProvidedByCoManager serviceProvidedByCoManager) {
         this.serviceProvidedByCoManager = serviceProvidedByCoManager;
     }
