@@ -1,6 +1,9 @@
 package com.kamiltest.demo.doa.model;
 
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Set;
@@ -21,15 +24,14 @@ public class ServiceProvidedByCo {
     private String description;
 
     @NotNull(message = "Required")
-    @Size(min = 3, max = 255, message = "It must be between 3 and 255 characters")
+    @Min(value = 0,message = "Price can't be on minus")
     private int nettoPrice;
 
     @NotNull(message = "Required")
     @Size(min = 3, max = 255, message = "It must be between 3 and 255 characters")
     private String additionalInfo;
 
-    @NotNull(message = "Required")
-    @Size(min = 3, max = 255, message = "It must be between 3 and 255 characters")
+    @Nullable
     @ManyToMany(mappedBy = "servicesProvidedByCo")
     private Set<Order> orders;
 
