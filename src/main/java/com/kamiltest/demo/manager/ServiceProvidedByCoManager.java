@@ -4,6 +4,8 @@ import com.kamiltest.demo.doa.Repo.ServiceProvidedByCoRepo;
 import com.kamiltest.demo.doa.model.ServiceProvidedByCo;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ServiceProvidedByCoManager {
     private ServiceProvidedByCoRepo serviceProvidedByCoRepo;
@@ -15,6 +17,10 @@ public class ServiceProvidedByCoManager {
     public Iterable<ServiceProvidedByCo> getAllservices()
     {
         return this.serviceProvidedByCoRepo.findAll();
+    }
+
+    public Optional<ServiceProvidedByCo> findServiceById(Long id){
+        return this.serviceProvidedByCoRepo.findById(id);
     }
 
     public ServiceProvidedByCo saveService(ServiceProvidedByCo service)
