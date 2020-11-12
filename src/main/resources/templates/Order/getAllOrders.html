@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GET ALL ORDERS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+
+<body>
+<h1 class="text-center">ALL ORDERS</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="text-center" scope="col">CLIENT</th>
+                    <th class="text-center" scope="col">CLIENT PHONE</th>
+                    <th class="text-center" scope="col">CLIENT CAR</th>
+                    <th class="text-center" scope="col">NUMBER OF SERVICES</th>
+                    <th class="text-center" scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${orders.empty}">
+                    <th class="scope">No orders to show</th>
+                </tr>
+
+                <tr class="text-center" th:each="order : ${orders}">
+                    <td class="row">
+                        <span th:if="${order.client}"
+                              th:text="${order.client.name} + ' ' + ${order.client.surname}"></span>
+                    </td>
+                    <td>
+                        <span th:if="${order.client}"
+                              th:text="${order.client.contactNumber}"></span>
+                    </td>
+                    <td>
+                        <span th:if="${order.client.car}"
+                              th:text="${order.client.car.mark} + ' ' + ${order.client.car.model} + ' ' + ${order.client.car.year}"></span>
+                    </td>
+                    <td>
+                        <span th:if="${order.servicesProvidedByCo}"
+                              th:text="${order.servicesProvidedByCo.size()}"></span>
+                    </td>
+                    <td>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col" style="margin-bottom:5px">
+                                    <form th:method="get" th:action="@{|getspecificorder/worker/${order.Id}|}">
+                                        <input type="submit" value="Order Worker" class="btn btn-info" />
+                                    </form>
+                                </div>
+                                <div class="col">
+                                    <form th:method="get" th:action="@{|updateorder/${order.Id}|}">
+                                        <input type="submit" value="Update" class="btn btn-warning" />
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col" style="margin-bottom:5px">
+                                    <form th:method="get" th:action="@{|getspecificorder/client/${order.Id}|}">
+                                        <input type="submit" value="Order Client" class="btn btn-success" />
+                                    </form>
+                                </div>
+                                <div class="col">
+                                    <form th:method="delete" th:action="@{|deleteorder/${order.Id}|}">
+                                        <input type="submit" value="Delete" class="btn btn-danger" />
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</html>

@@ -7,63 +7,63 @@
 </head>
 
 <body>
-    <h1 class="text-center">ALL CARS</h1>
+<h1 class="text-center">ALL CARS</h1>
 <div class="container">
     <div class="row justify-content-center">
-            <div class="col-sm-12">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th class="text-center" scope="col">ID CLIENT</th>
-                            <th class="text-center" scope="col">MARK</th>
-                            <th class="text-center" scope="col">MODEL</th>
-                            <th class="text-center" scope="col">YEAR</th>
-                            <th class="text-center" scope="col">CLIENT</th>
-                            <th class="text-center" scope="col">CLIENT NUMBER</th>
-                            <th class="text-center" scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:if="${cars.empty}">
-                            <th class="scope">No cars to show</th>
-                        </tr>
+        <div class="col-sm-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="text-center" scope="col">ID CLIENT</th>
+                    <th class="text-center" scope="col">MARK</th>
+                    <th class="text-center" scope="col">MODEL</th>
+                    <th class="text-center" scope="col">YEAR</th>
+                    <th class="text-center" scope="col">CLIENT</th>
+                    <th class="text-center" scope="col">CLIENT NUMBER</th>
+                    <th class="text-center" scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${cars.empty}">
+                    <th class="scope">No cars to show</th>
+                </tr>
 
-                        <tr class="text-center" th:each="car : ${cars}">
-                            <td class="row">
-                                <span th:text="${car.getId()}"></span>
-                            </td>
-                            <td>
-                                <span th:text="${car.getMark()}"></span>
-                            </td>
-                            <td>
-                                <span th:text="${car.getModel()}"></span>
-                            </td>
-                            <td>
-                                <span  th:text="${car.getYear()}"></span>
-                            </td>
-                            <td>
-                                <span th:if="${car.getClient()}" th:text="${car.client.name} + ' ' + ${car.client.surname}"></span>
-                                <span th:if="${car.getClient() == null}">No client yet</span>
-                            </td>
-                            <td>
-                                <span th:if="${car.getClient()}" th:text="${car.client.contactNumber}"></span>
-                                <span th:if="${car.getClient() == null}">No number</span>
-                            </td>
-                            <td>
-                                <form th:method="delete" th:action="@{|deletecar/${car.Id}|}">
-                                    <input type="submit" value="Delete" class="btn btn-danger" />
-                                </form>
-                            </td>
-                            <td>
-                                <form th:method="get" th:action="@{|updatecar/${car.Id}|}">
-                                    <input type="submit" value="Update" class="btn btn-warning" />
-                                </form>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                <tr class="text-center" th:each="car : ${cars}">
+                    <td class="row">
+                        <span th:text="${car.getId()}"></span>
+                    </td>
+                    <td>
+                        <span th:text="${car.getMark()}"></span>
+                    </td>
+                    <td>
+                        <span th:text="${car.getModel()}"></span>
+                    </td>
+                    <td>
+                        <span  th:text="${car.getYear()}"></span>
+                    </td>
+                    <td>
+                        <span th:if="${car.getClient()}" th:text="${car.client.name} + ' ' + ${car.client.surname}"></span>
+                        <span th:if="${car.getClient() == null}">No client yet</span>
+                    </td>
+                    <td>
+                        <span th:if="${car.getClient()}" th:text="${car.client.contactNumber}"></span>
+                        <span th:if="${car.getClient() == null}">No number</span>
+                    </td>
+                    <td>
+                        <form th:method="delete" th:action="@{|deletecar/${car.Id}|}">
+                            <input type="submit" value="Delete" class="btn btn-danger" />
+                        </form>
+                    </td>
+                    <td>
+                        <form th:method="get" th:action="@{|updatecar/${car.Id}|}">
+                            <input type="submit" value="Update" class="btn btn-warning" />
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
+    </div>
 </div>
 </body>
 
