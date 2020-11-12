@@ -1,6 +1,7 @@
 package com.kamiltest.demo.doa.controller;
 
 import com.kamiltest.demo.doa.model.Worker;
+import com.kamiltest.demo.manager.OrderManager;
 import com.kamiltest.demo.manager.WorkerManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,10 +17,12 @@ import java.util.Optional;
 @RequestMapping("/api/worker/")
 public class WorkerController {
     private WorkerManager workerManager;
+    private OrderManager orderManager;
 
     @Autowired
-    public WorkerController(WorkerManager workerManager) {
+    public WorkerController(WorkerManager workerManager, OrderManager orderManager) {
         this.workerManager = workerManager;
+        this.orderManager = orderManager;
     }
 
     @GetMapping("/getallworkers")
@@ -87,5 +90,28 @@ public class WorkerController {
         return "redirect:/api/worker/getallworkers";
     }
 
+    @GetMapping("/assignwork")
+    public String assignWorkGetMethod(Model model)
+    {
+        model.addAttribute("viewmodel",new Object());
+        //workers can be sorted based on task count
+        model.addAttribute("workers",this.workerManager.findAll());
+        //there should be orders that are not assign
+        model.addAttribute("orders",this.orderManager.findAll());
+        return "Worker/assignWork";
+    }
 
+//    @PostMapping("/assignwork")
+//    public String assignWorkPostMethod(
+//            @ModelAttribute("model") viewModelAssignJobForWorker viewModel)
+//    {
+//        if(viewModel.getIdWorker() != null && viewModel.getIdOrder() != null)
+//        {
+//            return "redirect:/api/worker/getallworkers";
+//        }
+//        //something do with boolean?
+//        this.workerManager.assignOrderForWorker(viewModel.getIdWorker(),
+//                viewModel.getIdWorker());
+//        return "redirect:/api/worker/getallworkers";
+//    }
 }
