@@ -18,6 +18,8 @@
                     <th class="text-center" scope="col">CLIENT PHONE</th>
                     <th class="text-center" scope="col">CLIENT CAR</th>
                     <th class="text-center" scope="col">NUMBER OF SERVICES</th>
+                    <th class="text-center" scope="col">PAYED</th>
+                    <th class="text-center" scope="col">DONE</th>
                     <th class="text-center" scope="col">Actions</th>
                 </tr>
                 </thead>
@@ -42,6 +44,14 @@
                     <td>
                         <span th:if="${order.servicesProvidedByCo}"
                               th:text="${order.servicesProvidedByCo.size()}"></span>
+                    </td>
+                    <td>
+                        <span th:if="${order.getisPayed() != null}"
+                              th:text="${order.getisPayed()}"></span>
+                    </td>
+                    <td>
+                        <span th:if="${order.getisDone() != null}"
+                              th:text="${order.getisDone()}"></span>
                     </td>
                     <td>
                         <div class="container">

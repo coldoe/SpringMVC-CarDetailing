@@ -14,6 +14,8 @@
             <h3 class="text-center" th:if="${order.Id}"
                 th:text="OrderId+' '+${order.Id}"></h3>
             <br>
+            <h3 class="text-center" th:text="'Done: '+ ${order.getisDone()}"></h3>
+            <h3 class="text-center" th:text="'Paid: '+ ${order.getisPayed()}"></h3>
             <h3 class="text-center"th:if="${order.client}"
                 th:text="${order.client.name} + ' ' + ${order.client.surname} + ' ' + ${order.client.contactNumber}"></h3>
             <h3 class="text-center" th:if="${order.client.car}"
@@ -34,6 +36,18 @@
                 th:text="Brutto + ' ' + ${order.countBruttoValueOfServices()}"></h1>
             <h1 class="text-right" th:if="${order.servicesProvidedByCo} and ${who == 'client'}"
                 th:text="Tax + ' ' + ${order.countSumOfTax()}"></h1>
+        </div>
+        <div class="col-sm-4 text-center">
+            <div th:if="${who == 'worker'}">
+                <form th:method="put" th:action="@{/api/order/setboolean/done/} + ${order.Id}">
+                    <input type="submit" value="Set as done" class="btn btn-warning" />
+                </form>
+            </div>
+            <div th:if="${who == 'client'}">
+                <form th:method="put" th:action="@{/api/order/setboolean/payed/} + ${order.Id}">
+                    <input type="submit" value="Set as paid" class="btn btn-warning" />
+                </form>
+            </div>
         </div>
     </div>
 </div>

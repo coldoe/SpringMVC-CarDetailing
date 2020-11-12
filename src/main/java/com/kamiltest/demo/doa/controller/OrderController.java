@@ -4,9 +4,7 @@ import com.kamiltest.demo.doa.model.Order;
 import com.kamiltest.demo.manager.OrderManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -50,7 +48,38 @@ public class OrderController {
         }
         return "redirect:/api/order/getallorders";
     }
-    //add
-    //update
+    //add i guess special view model to store id client, list of services,
+    //update i guess without changing etc cause too much
+    @PutMapping("/setboolean/{field}/{id}")
+    public String updateOrderBasedOnFieldPutMethod(@PathVariable String field,
+                                                   @PathVariable Long id)
+    {
+        Optional<Order> orderToUpdateFieldBool = this.orderManager.findOrderById(id);
+        if(orderToUpdateFieldBool.isPresent())
+        {
+            Order order = orderToUpdateFieldBool.get();
+            if(field.equals("done"))
+            {
+                order.setDone(!order.getisDone());
+                this.orderManager.saveOrder(order);
+            }
+            else if(field.equals("payed"))
+            {
+                order.setPayed(!order.getisPayed());
+                this.orderManager.saveOrder(order);
+            }
+        }
+        return "redirect:/api/order/getallorders";
+    }
     //delete
+    @DeleteMapping("/deleteorder/{id}")
+    public String deleteOrder(@PathVariable Long id)
+    {
+        Optional<Order> orderToDelete = this.orderManager.findOrderById(id);
+        if(orderToDelete.isPresent())
+        {
+            this.orderManager.deleteOrderById(id);
+        }
+        return "redirect:/api/order/getallorders";
+    }
 }
