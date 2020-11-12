@@ -26,16 +26,31 @@ public class OrderController {
         return "Order/getAllOrders";
     }
 
-    @GetMapping("/getspecificorder/{id}")
-    public String findSpecificOrderById(@PathVariable Long id,Model model)
+    @GetMapping("/getspecificorder/{who}/{id}")
+    public String findSpecificOrderById(@PathVariable Long id,
+                                        @PathVariable String who,
+                                        Model model)
     {
         Optional<Order> orderCheck = this.orderManager.findOrderById(id);
         if(orderCheck.isPresent())
         {
-            //a lot of list to print
             model.addAttribute("order",orderCheck.get());
-            return "Order/getSpecificOrder";
+            if(who.equals("client"))
+            {
+                model.addAttribute("who","client");
+                return "Order/getSpecificOrder";
+            }
+            else if(who.equals("worker"))
+            {
+                model.addAttribute("who","worker");
+                return "Order/getSpecificOrder";
+            }
+            else
+                return "redirect:/api/order/getallorders";
         }
         return "redirect:/api/order/getallorders";
     }
+    //add
+    //update
+    //delete
 }

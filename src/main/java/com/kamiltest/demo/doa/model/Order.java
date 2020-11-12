@@ -77,7 +77,7 @@ public class Order {
         {
             sum += service.getNettoPrice();
         }
-        return (double)Math.round(sum);
+        return (double) Math.round(sum * 100)/100;
     }
 
     public double countBruttoValueOfServices()
@@ -87,11 +87,11 @@ public class Order {
         {
             sum += 1.18 * service.getNettoPrice();
         }
-        return (double)Math.round(sum);
+        return (double) Math.round(sum * 100)/100;
     }
 
     public double countSumOfTax()
     {
-        return (double)Math.round(countBruttoValueOfServices() - countNettoValueOfServices());
+        return (double) Math.round((countBruttoValueOfServices() - countNettoValueOfServices()) * 100)/100;
     }
 }
