@@ -31,7 +31,7 @@ public class Order {
     }
 
     public Order(Long id, Client client,
-                 Set<ServiceProvidedByCo> servicesProvidedByCo) {
+    Set<ServiceProvidedByCo> servicesProvidedByCo) {
         Id = id;
         this.client = client;
         this.servicesProvidedByCo = servicesProvidedByCo;
@@ -68,5 +68,30 @@ public class Order {
 
     public void setServicesProvidedByCo(Set<ServiceProvidedByCo> servicesProvidedByCo) {
         this.servicesProvidedByCo = servicesProvidedByCo;
+    }
+
+    public double countNettoValueOfServices()
+    {
+        double sum = 0;
+        for(ServiceProvidedByCo service:this.servicesProvidedByCo)
+        {
+            sum += service.getNettoPrice();
+        }
+        return (double)Math.round(sum);
+    }
+
+    public double countBruttoValueOfServices()
+    {
+        double sum = 0;
+        for(ServiceProvidedByCo service:this.servicesProvidedByCo)
+        {
+            sum += 1.18 * service.getNettoPrice();
+        }
+        return (double)Math.round(sum);
+    }
+
+    public double countSumOfTax()
+    {
+        return (double)Math.round(countBruttoValueOfServices() - countNettoValueOfServices());
     }
 }
