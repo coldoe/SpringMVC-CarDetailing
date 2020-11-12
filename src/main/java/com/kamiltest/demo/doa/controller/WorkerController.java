@@ -1,6 +1,7 @@
 package com.kamiltest.demo.doa.controller;
 
 import com.kamiltest.demo.doa.model.Worker;
+import com.kamiltest.demo.doa.viewModels.OrderAssignToWorker;
 import com.kamiltest.demo.manager.OrderManager;
 import com.kamiltest.demo.manager.WorkerManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,25 +94,25 @@ public class WorkerController {
     @GetMapping("/assignwork")
     public String assignWorkGetMethod(Model model)
     {
-        model.addAttribute("viewmodel",new Object());
+        model.addAttribute("viewmodel",new OrderAssignToWorker());
         //workers can be sorted based on task count
         model.addAttribute("workers",this.workerManager.findAll());
         //there should be orders that are not assign
         model.addAttribute("orders",this.orderManager.findAll());
-        return "Worker/assignWork";
+        return "Worker/assignOrderToWorker";
     }
 
-//    @PostMapping("/assignwork")
-//    public String assignWorkPostMethod(
-//            @ModelAttribute("model") viewModelAssignJobForWorker viewModel)
-//    {
-//        if(viewModel.getIdWorker() != null && viewModel.getIdOrder() != null)
-//        {
-//            return "redirect:/api/worker/getallworkers";
-//        }
-//        //something do with boolean?
-//        this.workerManager.assignOrderForWorker(viewModel.getIdWorker(),
-//                viewModel.getIdWorker());
-//        return "redirect:/api/worker/getallworkers";
-//    }
+    @PostMapping("/assignwork")
+    public String assignWorkPostMethod(
+            @ModelAttribute("model") OrderAssignToWorker viewModel)
+    {
+        if(viewModel.getIdWorker() != null && viewModel.getIdOrder() != null)
+        {
+            //something do with boolean?
+            this.workerManager.assignOrderForWorker(viewModel.getIdWorker(),
+                    viewModel.getIdOrder());
+            return "redirect:/api/worker/getallworkers";
+        }
+        return "redirect:/api/worker/getallworkers";
+    }
 }

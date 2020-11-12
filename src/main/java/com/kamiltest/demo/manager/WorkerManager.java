@@ -41,7 +41,7 @@ public class WorkerManager {
             Worker worker = workerOpt.get();
             Order order = orderToAssign.get();
             worker.getOrdersToDo().add(order);
-            this.save(worker);
+            this.workerRepo.save(worker);
             return true;
         }
         return false;
