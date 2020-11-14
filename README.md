@@ -29,8 +29,5 @@ TODO:
 
   - getAllClients => buttons colapse on small view
 
-  - add in view getallclients button that will assign car only if
-  there is no car, button redirects to view and lists all cars
-  without owner, user clicks on dropdown list (something like that),
-  clicks button and boom client has car now.
+  - assigntowork view => Orders should be only orders that are not taken
 

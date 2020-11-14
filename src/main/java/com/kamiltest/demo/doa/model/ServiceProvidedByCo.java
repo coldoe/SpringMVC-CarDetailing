@@ -49,17 +49,17 @@ public class ServiceProvidedByCo {
         this.orders = orders;
     }
 
-    @Override
-    public String toString() {
-        return "ServiceProvidedByCo{" +
-                "Id=" + Id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", nettoPrice=" + nettoPrice +
-                ", additionalInfo='" + additionalInfo + '\'' +
-                ", orders=" + orders +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "ServiceProvidedByCo{" +
+//                "Id=" + Id +
+//                ", name='" + name + '\'' +
+//                ", description='" + description + '\'' +
+//                ", nettoPrice=" + nettoPrice +
+//                ", additionalInfo='" + additionalInfo + '\'' +
+//                ", orders=" + orders +
+//                '}';
+//    }
 
     public Long getId() {
         return Id;

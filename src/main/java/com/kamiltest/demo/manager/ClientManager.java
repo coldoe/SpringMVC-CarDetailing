@@ -110,4 +110,5 @@ public class ClientManager {
     {
         return this.clientRepo.getAllClientsThatHaveNoCars();
     }
+    public Iterable<Client> findClientsWithCars(){return this.clientRepo.getAllClientsThatHaveCars();}
 }

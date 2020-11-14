@@ -31,6 +31,10 @@ public class OrderManager {
             return false;
         }
     }
+    public Iterable<Order> getAllOrdersNotAssignToWorker()
+    {
+        return this.orderRepo.getAllNotAssignOrdersToWorker();
+    }
 
 
 }

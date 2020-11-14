@@ -38,14 +38,14 @@ public class Order {
         this.isPayed = isPayed;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "Id=" + Id +
-                ", client=" + client +
-                ", servicesProvidedByCo=" + servicesProvidedByCo +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Order{" +
+//                "Id=" + Id +
+//                ", client=" + client +
+//                ", servicesProvidedByCo=" + servicesProvidedByCo +
+//                '}';
+//    }
 
     public Long getId() {
         return Id;

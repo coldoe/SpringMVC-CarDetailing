@@ -13,4 +13,8 @@ public interface ClientRepo extends CrudRepository<Client,Long> {
             " from client c\n" +
             " where c.car_id is null;",nativeQuery = true)
     Collection<Client> getAllClientsThatHaveNoCars();
+    @Query(value = "select *\n" +
+            " from client c\n" +
+            " where c.car_id is not null;",nativeQuery = true)
+    Collection<Client> getAllClientsThatHaveCars();
 }
