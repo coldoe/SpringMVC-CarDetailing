@@ -98,7 +98,7 @@ public class WorkerController {
         //workers can be sorted based on task count
         model.addAttribute("workers",this.workerManager.findAll());
         //there should be orders that are not assign
-        model.addAttribute("orders",this.orderManager.findAll());
+        model.addAttribute("orders",this.orderManager.getAllOrdersNotAssignToWorker());
         return "Worker/assignOrderToWorker";
     }
 
