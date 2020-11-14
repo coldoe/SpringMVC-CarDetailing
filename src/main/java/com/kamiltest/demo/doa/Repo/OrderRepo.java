@@ -11,7 +11,9 @@ import java.util.Collection;
 public interface OrderRepo extends CrudRepository<Order,Long> {
     @Query(value = "select * \n" +
             "from orders o \n" +
-            "where not exists " +
-            "(select order_id from workers_orders w where w.order_id = o.id);\n",nativeQuery = true)
+            "where o.is_done = 0 and o.is_payed = 0 and  \n" +
+            "not exists (select order_id \n" +
+            "from workers_orders w \n" +
+            "where w.order_id = o.id);",nativeQuery = true)
     Collection<Order> getAllNotAssignOrdersToWorker();
 }
