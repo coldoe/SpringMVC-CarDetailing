@@ -40,7 +40,7 @@
 
                 <button type="submit" class="btn btn-primary">Submit Order</button>
             </form>
-
+        <div class="text-danger text-center" th:if="${ErrorModel} != null" th:text="${ErrorModel}"></div>
         </div>
     </div>
 </div>
