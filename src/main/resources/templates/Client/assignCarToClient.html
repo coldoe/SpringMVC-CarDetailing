@@ -23,6 +23,7 @@
                                 <option th:each="client : ${clients}" th:value="${client.Id}"
                                         th:text="${client.getName()}+' '+${client.surname}+' '+${client.contactNumber}"></option>
                             </select>
+                            <span class="text-danger" th:errors="*{idClient}"></span>
                         </div>
                     </div>
                 </div>
@@ -35,13 +36,14 @@
                                 <option th:each="car : ${cars}" th:value="${car.Id}"
                                         th:text="${car.mark}+' '+${car.model}+' '+${car.year}"></option>
                             </select>
+                            <span class="text-danger" th:errors="*{idCar}"></span>
                         </div>
                     </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit Changes</button>
             </form>
-
+            <div class="text-danger text-center" th:if="${notValidated}" th:text="${notValidated}"></div>
         </div>
     </div>
 </div>

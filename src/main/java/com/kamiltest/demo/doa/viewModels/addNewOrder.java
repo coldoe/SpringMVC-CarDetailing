@@ -1,9 +1,12 @@
 package com.kamiltest.demo.doa.viewModels;
 
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 public class addNewOrder {
+    @NotNull(message = "Required")
     private Long idClient;
+    @NotNull(message = "Required")
     private Set<Long> services;
 
     public addNewOrder() {
