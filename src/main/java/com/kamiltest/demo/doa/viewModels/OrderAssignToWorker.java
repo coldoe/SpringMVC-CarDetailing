@@ -1,7 +1,11 @@
 package com.kamiltest.demo.doa.viewModels;
 
+import javax.validation.constraints.NotNull;
+
 public class OrderAssignToWorker {
+    @NotNull(message = "Required")
     private Long idOrder;
+    @NotNull(message = "Required")
     private Long idWorker;
 
     public OrderAssignToWorker() {

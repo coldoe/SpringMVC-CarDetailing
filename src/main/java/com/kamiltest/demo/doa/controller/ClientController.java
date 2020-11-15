@@ -92,8 +92,18 @@ public class ClientController {
     }
     @PostMapping("/assigncartoclient")
     public String assignCarToClientPostMethod(
-            @ModelAttribute("viewmodel")viewModelCarClient idx)
+            Model model,
+            @Valid @ModelAttribute("viewmodel")viewModelCarClient idx,
+            BindingResult result)
     {
+        if(result.hasErrors())
+        {
+            model.addAttribute("cars",this.carManager.findCarsThatHaveNoOwner());
+            model.addAttribute("clients",this.clientManager.findClientsWithoutCars());
+            model.addAttribute("viewmodel",new viewModelCarClient());
+            model.addAttribute("notValidated",result.getFieldError().getDefaultMessage());
+            return "Client/assignCarToClient";
+        }
         this.clientManager.addCarForClient(idx.getIdClient(),idx.getIdCar());
         return "redirect:/api/client/assigncartoclient";
     }
