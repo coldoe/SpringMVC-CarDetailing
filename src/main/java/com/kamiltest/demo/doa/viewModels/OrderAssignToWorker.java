@@ -1,11 +1,21 @@
 package com.kamiltest.demo.doa.viewModels;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 public class OrderAssignToWorker {
-    @NotNull(message = "Required")
+    @Min(value = 1,message = "Required")
+    @NotBlank(message = "You need to fill all fields, fields wont pass without values")
+    @NotNull(message = "You need to fill all fields, fields wont pass without values")
+    @NotEmpty(message = "You need to fill all fields, fields wont pass without values")
     private Long idOrder;
-    @NotNull(message = "Required")
+
+    @Min(value = 1,message = "Required")
+    @NotBlank(message = "You need to fill all fields, fields wont pass without values")
+    @NotNull(message = "You need to fill all fields, fields wont pass without values")
+    @NotEmpty(message = "You need to fill all fields, fields wont pass without values")
     private Long idWorker;
 
     public OrderAssignToWorker() {

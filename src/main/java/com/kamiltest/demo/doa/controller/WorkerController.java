@@ -95,20 +95,27 @@ public class WorkerController {
     public String assignWorkGetMethod(Model model)
     {
         model.addAttribute("viewmodel",new OrderAssignToWorker());
-        //workers can be sorted based on task count
         model.addAttribute("workers",this.workerManager.findAll());
-        //there should be orders that are not assign
         model.addAttribute("orders",this.orderManager.getAllOrdersNotAssignToWorker());
         return "Worker/assignOrderToWorker";
     }
 
     @PostMapping("/assignwork")
     public String assignWorkPostMethod(
-            @ModelAttribute("model") OrderAssignToWorker viewModel)
+            Model model,
+            @Valid @ModelAttribute("model") OrderAssignToWorker viewModel,
+            BindingResult result)
     {
-        if(viewModel.getIdWorker() != null && viewModel.getIdOrder() != null)
+        if(result.hasErrors())
         {
-            //something do with boolean?
+            model.addAttribute("viewmodel",new OrderAssignToWorker());
+            model.addAttribute("workers",this.workerManager.findAll());
+            model.addAttribute("orders",this.orderManager.getAllOrdersNotAssignToWorker());
+            model.addAttribute("notValidated",result.getFieldError().getDefaultMessage());
+            return "Worker/assignOrderToWorker";
+        }
+        else if(viewModel.getIdWorker() != null && viewModel.getIdOrder() != null)
+        {
             this.workerManager.assignOrderForWorker(viewModel.getIdWorker(),
                     viewModel.getIdOrder());
             return "redirect:/api/worker/getallworkers";

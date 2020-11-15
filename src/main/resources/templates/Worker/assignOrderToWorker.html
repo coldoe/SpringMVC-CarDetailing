@@ -43,7 +43,7 @@
 
                 <button type="submit" class="btn btn-primary">Assign work</button>
             </form>
-
+            <div class="text-danger text-center" th:if="${notValidated}" th:text="${notValidated}"></div>
         </div>
     </div>
 </div>
