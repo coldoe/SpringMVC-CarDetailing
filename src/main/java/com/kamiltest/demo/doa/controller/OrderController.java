@@ -5,6 +5,7 @@ import com.kamiltest.demo.doa.viewModels.addNewOrder;
 import com.kamiltest.demo.manager.ClientManager;
 import com.kamiltest.demo.manager.OrderManager;
 import com.kamiltest.demo.manager.ServiceProvidedByCoManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ public class OrderController {
     private ServiceProvidedByCoManager serviceProvidedByCoManager;
     private ClientManager clientManager;
 
+    @Autowired
     public OrderController(OrderManager orderManager, ServiceProvidedByCoManager serviceProvidedByCoManager, ClientManager clientManager) {
         this.orderManager = orderManager;
         this.serviceProvidedByCoManager = serviceProvidedByCoManager;
@@ -55,7 +57,7 @@ public class OrderController {
         }
         return "redirect:/api/order/getallorders";
     }
-    //add i guess special view model to store id client, list of services,
+
     @GetMapping("/addorder")
     public String addNewOrderGetMethod(Model model)
     {
@@ -64,6 +66,7 @@ public class OrderController {
         model.addAttribute("clients",this.clientManager.findClientsWithCars());
         return "Order/addNewOrder";
     }
+
     @PostMapping("/addorder")
     public String addNewOrderPostMethod(Model model,
                                         @ModelAttribute("valuesToPass")addNewOrder order,
@@ -80,7 +83,7 @@ public class OrderController {
         this.orderManager.addNewOrder(order,services);
         return "redirect:/api/order/getallorders";
     }
-    //update i guess without changing etc cause too much
+
     @PutMapping("/setboolean/{field}/{id}")
     public String updateOrderBasedOnFieldPutMethod(@PathVariable String field,
                                                    @PathVariable Long id)
@@ -102,7 +105,7 @@ public class OrderController {
         }
         return "redirect:/api/order/getallorders";
     }
-    //delete
+
     @DeleteMapping("/deleteorder/{id}")
     public String deleteOrder(@PathVariable Long id)
     {
