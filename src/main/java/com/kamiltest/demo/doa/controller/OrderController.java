@@ -1,8 +1,6 @@
 package com.kamiltest.demo.doa.controller;
 
-import com.kamiltest.demo.doa.model.Client;
 import com.kamiltest.demo.doa.model.Order;
-import com.kamiltest.demo.doa.model.ServiceProvidedByCo;
 import com.kamiltest.demo.doa.viewModels.addNewOrder;
 import com.kamiltest.demo.manager.ClientManager;
 import com.kamiltest.demo.manager.OrderManager;
@@ -11,9 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.LinkedHashSet;
 import java.util.Optional;
-import java.util.Set;
 
 @Controller
 @RequestMapping("/api/order")
@@ -69,32 +65,19 @@ public class OrderController {
         return "Order/addNewOrder";
     }
     @PostMapping("/addorder")
-    public String addNewOrderPostMethod(@ModelAttribute("valuesToPass")addNewOrder order,
+    public String addNewOrderPostMethod(Model model,
+                                        @ModelAttribute("valuesToPass")addNewOrder order,
                                         @RequestParam(value = "servicesTable" , required = false) String[] services )
     {
-        order.setServices(new LinkedHashSet<Long>());
-        for(String g : services)
+        if(services == null || services.length <= 0 || order == null)
         {
-            order.addToSet(Long.parseLong(g));
+            model.addAttribute("ErrorModel","Services or Order cant be empty");
+            model.addAttribute("valuesToPass", new addNewOrder());
+            model.addAttribute("services", this.serviceProvidedByCoManager.getAllservices());
+            model.addAttribute("clients",this.clientManager.findClientsWithCars());
+            return "Order/addNewOrder";
         }
-        if(order.getIdClient() != null && order.getServices() != null && order.getServices().size() > 0)
-        {
-            Optional<Client> client = this.clientManager.findById(order.getIdClient());
-            Set<ServiceProvidedByCo> servicesSet = new LinkedHashSet<>();
-            for(Long idService : order.getServices())
-            {
-                servicesSet.add(this.serviceProvidedByCoManager.findServiceById(idService).get());
-            }
-            if(client.isPresent())
-            {
-                Order orderToSave = new Order();
-                orderToSave.setClient(client.get());
-                orderToSave.setServicesProvidedByCo(servicesSet);
-                orderToSave.setDone(false);
-                orderToSave.setPayed(false);
-                this.orderManager.saveOrder(orderToSave);
-            }
-        }
+        this.orderManager.addNewOrder(order,services);
         return "redirect:/api/order/getallorders";
     }
     //update i guess without changing etc cause too much
