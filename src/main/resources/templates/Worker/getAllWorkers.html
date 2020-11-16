@@ -56,8 +56,7 @@
                         <form th:method="get" th:action="@{|updateworker/${worker.getId()}|}">
                             <input type="submit" value="Update" class="btn btn-warning" />
                         </form>
-                    </td>
-                    <td>
+
                         <form th:method="delete" th:action="@{|deleteworker/${worker.getId()}|}">
                             <input type="submit" value="Delete" class="btn btn-danger" />
                         </form>
