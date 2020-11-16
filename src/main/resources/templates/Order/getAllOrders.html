@@ -54,24 +54,23 @@
                               th:text="${order.getisDone()}"></span>
                     </td>
                     <td>
-                        <div class="container">
                             <div class="row">
-                                <div class="col" style="margin-bottom:5px">
+                                <div class="col">
                                     <form th:method="get" th:action="@{|getspecificorder/worker/${order.Id}|}">
-                                        <input type="submit" value="Order Worker" class="btn btn-info" />
+                                        <input type="submit" value="Set Done" class="btn btn-info" />
                                     </form>
                                 </div>
                                 <div class="col">
-                                    <form th:method="get" th:action="@{|updateorder/${order.Id}|}">
-                                        <input type="submit" value="Update" class="btn btn-warning" />
+                                    <form th:method="get" th:action="@{|getspecificorder/client/${order.Id}|}">
+                                        <input type="submit" value="Set Payed" class="btn btn-success" />
                                     </form>
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col" style="margin-bottom:5px">
-                                    <form th:method="get" th:action="@{|getspecificorder/client/${order.Id}|}">
-                                        <input type="submit" value="Order Client" class="btn btn-success" />
+                            <div class="row" style="margin-top:12px">
+                                <div class="col">
+                                    <form th:method="get" th:action="@{|updateorder/${order.Id}|}">
+                                        <input type="submit" value="Update" class="btn btn-warning" />
                                     </form>
                                 </div>
                                 <div class="col">
@@ -80,7 +79,6 @@
                                     </form>
                                 </div>
                             </div>
-                        </div>
                     </td>
                 </tr>
                 </tbody>
