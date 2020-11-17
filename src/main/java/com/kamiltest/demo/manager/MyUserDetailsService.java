@@ -1,6 +1,7 @@
 package com.kamiltest.demo.manager;
 
 import com.kamiltest.demo.doa.Repo.UserRepo;
+import com.kamiltest.demo.doa.model.MyUserDetails;
 import com.kamiltest.demo.doa.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,7 +21,7 @@ public class MyUserDetailsService implements UserDetailsService {
             Optional<User> userFromDb = this.userRepo.findUserByUsername(username);
             if(userFromDb.isPresent())
             {
-
+                return new MyUserDetails(userFromDb.get());
             }
             else if(!userFromDb.isPresent())
             {

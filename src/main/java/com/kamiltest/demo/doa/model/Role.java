@@ -1,12 +1,16 @@
 package com.kamiltest.demo.doa.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//    @Column(name = "role_id")
+    private Long idRole;
 
     private String roleName;
 
@@ -16,16 +20,16 @@ public class Role {
     }
 
     public Role(Long id, String roleName) {
-        this.id = id;
+        this.idRole = id;
         this.roleName = roleName;
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdRole() {
+        return idRole;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdRole(Long idRole) {
+        this.idRole = idRole;
     }
 
     public String getRoleName() {
@@ -35,5 +39,4 @@ public class Role {
     public void setRoleName(String roleName) {
         this.roleName = roleName;
     }
-
 }

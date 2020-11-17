@@ -10,7 +10,7 @@ public class User {
     @Id
     @PrimaryKeyJoinColumn
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idUser;
 
     private String Username;
 
@@ -21,20 +21,21 @@ public class User {
     @ManyToMany()
     @JoinTable(
             name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id")
+//            ,referencedColumnName = "idUser"
+            joinColumns = @JoinColumn(name = "idUser",referencedColumnName = "idUser"),
+            inverseJoinColumns = @JoinColumn(name = "idRole",referencedColumnName = "idRole")
     )
     private Set<Role> roles = new HashSet<>();
 
     public User() {
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdUser() {
+        return idUser;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
     }
 
     public String getUsername() {

@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.Optional;
 
 public interface UserRepo extends CrudRepository<User,Long> {
-    @Query(value = "SELECT U FROM USERS WHERE U.USERNAME = :username")
+    @Query(value = "select * from users u where u.username = :username",nativeQuery = true)
     Optional<User> findUserByUsername(@Param("username")String username);
 }
