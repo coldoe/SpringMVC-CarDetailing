@@ -14,17 +14,13 @@ public class CarManager {
         this.carRepo = carRepo;
     }
 
-    //get
     public Iterable<Car> findAll(){
         return this.carRepo.findAll();
     }
     public Optional<Car> findCarById(Long id) {return this.carRepo.findById(id);}
-    //add
-    //edit
     public Car updateCar(Car car){
         return this.carRepo.save(car);
     }
-    //delete
     public boolean deleteCarById(Long id){
         try{
             this.carRepo.deleteById(id);
@@ -35,8 +31,6 @@ public class CarManager {
             return false;
         }
     }
-
-    //need that to assign car to client
     public Iterable<Car> findCarsThatHaveNoOwner()
     {
         return this.carRepo.allCarsThatHaveNoOwner();
