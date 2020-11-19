@@ -18,4 +18,7 @@ public class HomeController {
         return "Sharing/home";
     }
 
+    @GetMapping("/403")
+    public String forbiddenHandler(){return "Sharing/403";}
+
 }

@@ -40,10 +40,17 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers("/api/car/addcar").hasAnyAuthority("ADMIN","MODERATOR")
+                .antMatchers("/api/car/getallcars").hasAnyAuthority("ADMIN","MODERATOR")
+                .antMatchers("/api/car/updatecar/**").hasAnyAuthority("ADMIN","MODERATOR")
+                .antMatchers("/api/car/deletecar/**").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().permitAll()
                 .and()
-                .logout().permitAll();
+                .logout().permitAll()
+                .and()
+                .exceptionHandling().accessDeniedPage("/api/403")
+        ;
     }
 }
