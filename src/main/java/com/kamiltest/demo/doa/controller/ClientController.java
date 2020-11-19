@@ -31,10 +31,10 @@ public class ClientController {
         return "Client/getAllClients";
     }
 
-    @GetMapping("/getbyid")
-    public Optional<Client> GetById(@RequestParam Long index){
-        return this.clientManager.findById(index);
-    }
+//    @GetMapping("/getbyid")
+//    public Optional<Client> GetById(@RequestParam Long index){
+//        return this.clientManager.findById(index);
+//    }
 
     @GetMapping("/updateclient/{id}")
     public String updateClient(@PathVariable Long id, Model model){

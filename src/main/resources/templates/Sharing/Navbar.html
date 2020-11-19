@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org" lang="en"
-      xmlsn:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -17,7 +18,7 @@
                 <a class="nav-link" href="#">PRICING</a>
             </li>
 
-            <li class="nav-item dropdown">
+            <li sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')" class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Car
                 </a>
@@ -27,7 +28,7 @@
                 </div>
             </li>
 
-            <li class="nav-item dropdown">
+            <li sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')" class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Client
                 </a>
@@ -38,7 +39,7 @@
                 </div>
             </li>
 
-            <li class="nav-item dropdown">
+            <li sec:authorize="hasAnyAuthority('ADMIN','MODERATOR','WORKER')" class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Order
                 </a>
@@ -48,7 +49,7 @@
                 </div>
             </li>
 
-            <li class="nav-item dropdown">
+            <li sec:authorize="hasAnyAuthority('ADMIN','MODERATOR','WORKER')" class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Services
                 </a>
@@ -58,7 +59,7 @@
                 </div>
             </li>
 
-            <li class="nav-item dropdown">
+            <li sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')" class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink5" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Workers
                 </a>

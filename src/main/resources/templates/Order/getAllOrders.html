@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" lang="en">
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      lang="en">
 <head>
     <meta charset="UTF-8">
     <title>GET ALL ORDERS</title>
@@ -21,7 +23,8 @@
                     <th class="text-center" scope="col">NUMBER OF SERVICES</th>
                     <th class="text-center" scope="col">PAYED</th>
                     <th class="text-center" scope="col">DONE</th>
-                    <th class="text-center" scope="col">Actions</th>
+                    <th sec:authorize="hasAnyAuthority('ADMIN','MODERATOR','WORKER')"
+                        class="text-center" scope="col">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -57,12 +60,14 @@
                     <td>
                             <div class="row">
                                 <div class="col">
-                                    <form th:method="get" th:action="@{|getspecificorder/worker/${order.Id}|}">
+                                    <form sec:authorize="hasAnyAuthority('ADMIN','WORKER')"
+                                          th:method="get" th:action="@{|getspecificorder/worker/${order.Id}|}">
                                         <input type="submit" value="Set Done" class="btn btn-info" />
                                     </form>
                                 </div>
                                 <div class="col">
-                                    <form th:method="get" th:action="@{|getspecificorder/client/${order.Id}|}">
+                                    <form sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')"
+                                          th:method="get" th:action="@{|getspecificorder/client/${order.Id}|}">
                                         <input type="submit" value="Set Payed" class="btn btn-success" />
                                     </form>
                                 </div>
@@ -70,12 +75,14 @@
 
                             <div class="row" style="margin-top:12px">
                                 <div class="col">
-                                    <form th:method="get" th:action="@{|updateorder/${order.Id}|}">
+                                    <form sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')"
+                                          th:method="get" th:action="@{|updateorder/${order.Id}|}">
                                         <input type="submit" value="Update" class="btn btn-warning" />
                                     </form>
                                 </div>
                                 <div class="col">
-                                    <form th:method="delete" th:action="@{|deleteorder/${order.Id}|}">
+                                    <form sec:authorize="hasAnyAuthority('ADMIN')"
+                                          th:method="delete" th:action="@{|deleteorder/${order.Id}|}">
                                         <input type="submit" value="Delete" class="btn btn-danger" />
                                     </form>
                                 </div>
