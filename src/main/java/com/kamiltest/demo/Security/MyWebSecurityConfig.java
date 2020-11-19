@@ -72,7 +72,7 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/worker/deleteworker/**").hasAnyAuthority("ADMIN")
                 .antMatchers("/api/worker/assignwork").hasAnyAuthority("ADMIN","MODERATOR")
 
-                .anyRequest().authenticated()
+                .antMatchers("/api/home").permitAll()
 
                 .and()
 
