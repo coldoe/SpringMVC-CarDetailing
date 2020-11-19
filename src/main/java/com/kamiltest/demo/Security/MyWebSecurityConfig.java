@@ -75,8 +75,10 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().permitAll()
+                .defaultSuccessUrl("/api/home")
                 .and()
                 .logout().permitAll()
+                .deleteCookies()
                 .and()
                 .exceptionHandling().accessDeniedPage("/api/403")
         ;
