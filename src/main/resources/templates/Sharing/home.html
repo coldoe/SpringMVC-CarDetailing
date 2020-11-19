@@ -12,14 +12,5 @@
 <div th:insert="Sharing/Navbar"></div>
 <div th:replace="Sharing/sharingBootStrapBody"></div>
 
-<div sec:authorize="isAuthenticated()">
-    Willkommen <span sec:authentication="name"></span>
-    <span sec:authentication="principal.authorities"></span>
-
-    <form th:action="@{/logout}" method="post">
-        <input class="btn btn-primary" type="submit" value =" Logout">
-    </form>
-</div>
-
 </body>
 </html>
