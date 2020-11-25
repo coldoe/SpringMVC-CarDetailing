@@ -50,7 +50,8 @@
                 </a>
                 <div class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/api/order/getallorders">Show All Orders</a>
-                    <a class="dropdown-item" href="/api/order/addorder">Add New Order</a>
+                    <a sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')"
+                       class="dropdown-item" href="/api/order/addorder">Add New Order</a>
                 </div>
             </li>
 
