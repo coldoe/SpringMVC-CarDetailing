@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GET ALL USER</title>
+    <div th:replace="Sharing/sharingBootStrap"></div>
+</head>
+
+<body>
+<div th:insert="Sharing/Navbar"></div>
+
+<h1 class="text-center">ALL USERS IN Co</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-12">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th class="text-center" scope="col">ID USER</th>
+                    <th class="text-center" scope="col">USERNAME</th>
+                    <th class="text-center" scope="col">ROLES</th>
+                    <th sec:authorize="hasAnyAuthority('ADMIN')"
+                        class="text-center" scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${users.empty}">
+                    <th class="scope">No users to show</th>
+                </tr>
+
+                <tr class="text-center" th:each="user : ${users}">
+                    <td class="row">
+                        <span th:text="${user.getIdUser()}"></span>
+                    </td>
+                    <td>
+                        <span th:text="${user.getUsername()}"></span>
+                    </td>
+                    <td>
+                        <span th:if="${user.getRoles() != null}"
+                              th:each="role : ${user.roles}" th:text="${role.getRoleName()}"></span>
+                        <span th:if="${user.getRoles() == null}">No roles yet</span>
+                    </td>
+                    <td sec:authorize="hasAnyAuthority('ADMIN',)">
+                        <form sec:authorize="hasAnyAuthority('ADMIN')"
+                              th:method="delete" th:action="@{|deleteuser/${user.Id}|}">
+                            <input type="submit" value="Delete" class="btn btn-danger" />
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div th:replace="Sharing/sharingBootStrapBody"></div>
+</body>
+</html>
