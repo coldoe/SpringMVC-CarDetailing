@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://thymeleaf.org" lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add new user</title>
+    <div th:replace="Sharing/sharingBootStrap"></div>
 </head>
-<body>
 
+<body>
+<div th:insert="Sharing/Navbar"></div>
+
+<div class="container">
+    <div class="row-sm-8">
+        <div class="col">
+            <form th:action="@{/api/user/adduser}" method="post" th:object="${viewmodel}">
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input th:field="*{user.Username}"
+                           type="text" class="form-control" id="username" placeholder="Username">
+                    <div class="text-danger"
+                         th:if="${notValidated != null} and ${error.field == 'user.Username'}"
+                         th:each="error : ${notValidated}"
+                         th:text="${error.defaultMessage}"
+                    >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input th:field="*{user.Password}"
+                           type="text" class="form-control" id="password"  placeholder="Password">
+                    <div class="text-danger"
+                         th:if="${notValidated != null} and ${error.field == 'user.Username'}"
+                         th:each="error : ${notValidated}"
+                         th:text="${error.defaultMessage}"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Role</label>
+                    <div class="dropdown">
+                        <div th:if="${roles != null}">
+                            <select class="form-control" id="exampleFormControlSelect1" th:field="*{idRole}" name="role">
+                                <option th:each="role : ${roles}" th:value="${role.idRole}"
+                                        th:text="${role.roleName}"></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Add User</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div th:replace="Sharing/sharingBootStrapBody"></div>
 </body>
 </html>

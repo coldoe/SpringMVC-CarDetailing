@@ -44,7 +44,7 @@
                     </td>
                     <td sec:authorize="hasAnyAuthority('ADMIN',)">
                         <form sec:authorize="hasAnyAuthority('ADMIN')"
-                              th:method="delete" th:action="@{|deleteuser/${user.Id}|}">
+                              th:method="delete" th:action="@{|deleteuser/${user.idUser}|}">
                             <input type="submit" value="Delete" class="btn btn-danger" />
                         </form>
                     </td>
