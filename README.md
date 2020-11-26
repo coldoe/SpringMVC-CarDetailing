@@ -1,10 +1,13 @@
 Project using:
 - Java 11
-- Spring
+- Spring Boot
+- Spring Security
 - Hibernate
 - MySQL
 - Thymeleaf
 - Bootstrap
+- HTML
+- CSS
 
 Setup:
 - Run MySQL server.
@@ -19,15 +22,7 @@ In case You didnt set Java (using IntelliJ)
 - Open project File => Open => (Look for project and find pom.xml) click ok and then click open as project.
 - Go File => Project Structure => Project SDK and set it to Java 11.
 
-
 TODO:
-- controllers and views
-- spring security - 3 groups:
-  user => ?
-  mod => ?
-  admin => ?
-
-  - getAllClients => buttons colapse on small view
-
-  - assigntowork view => Orders should be only orders that are not taken
+- somehow You need to be able to log in when there are no users in db
+- should add in memory admin something like that
 

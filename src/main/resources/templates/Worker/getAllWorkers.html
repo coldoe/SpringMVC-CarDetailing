@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" lang="en">
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      lang="en">
 <head>
     <meta charset="UTF-8">
     <title>GET ALL WORKERS</title>
@@ -22,7 +24,8 @@
                     <th class="text-center" scope="col">STREET</th>
                     <th class="text-center" scope="col">WITH US SINCE</th>
                     <th class="text-center" scope="col">ORDERS TO DO</th>
-                    <th class="text-center" scope="col">ACTIONS</th>
+                    <th sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')"
+                        class="text-center" scope="col">ACTIONS</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -54,11 +57,13 @@
                         <span th:if="${worker.ordersToDo == null || worker.countOrders() == 0}">No tasks</span>
                     </td>
                     <td>
-                        <form th:method="get" th:action="@{|updateworker/${worker.getId()}|}">
+                        <form sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')"
+                              th:method="get" th:action="@{|updateworker/${worker.getId()}|}">
                             <input type="submit" value="Update" class="btn btn-warning" />
                         </form>
 
-                        <form th:method="delete" th:action="@{|deleteworker/${worker.getId()}|}">
+                        <form sec:authorize="hasAnyAuthority('ADMIN')"
+                              th:method="delete" th:action="@{|deleteworker/${worker.getId()}|}">
                             <input type="submit" value="Delete" class="btn btn-danger" />
                         </form>
                     </td>

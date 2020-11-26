@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bad boi</title>
+    <div th:replace="Sharing/sharingBootStrap"></div>
+    <link th:href="@{/css/403.css}" rel="stylesheet" />
+</head>
+<body>
+<div th:replace="Sharing/sharingBootStrapBody"></div>
+
+
+<div id="app">
+    <div class="blink">403</div>
+    <!--<div class="txt">-->
+        <!--Forbidden<span class="blink">!</span>-->
+    <!--</div>-->
+    <form th:action = "@{/api/home}" method="get">
+        <div class="text-center">
+            <input class="btn btn-success btn-lg"
+                   value="Better go home" type="submit"
+            style="height:6rem">
+        </div>
+    </form>
+</div>
+
+
+</body>
+</html>

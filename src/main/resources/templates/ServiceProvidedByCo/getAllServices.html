@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" lang="en">
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      lang="en">
 <head>
     <meta charset="UTF-8">
     <title>GET ALL SERVICES</title>
@@ -12,7 +14,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-sm-12">
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                 <tr>
                     <th class="text-center" scope="col">ID Service</th>
@@ -20,7 +22,8 @@
                     <th class="text-center" scope="col">Description</th>
                     <th class="text-center" scope="col">Netto Price</th>
                     <th class="text-center" scope="col">Additional Info</th>
-                    <th class="text-center" scope="col">Actions</th>
+                    <th sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')"
+                        class="text-center" scope="col">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -46,10 +49,12 @@
                         <span th:if="${service.getAdditionalInfo() == null}">No info</span>
                     </td>
                     <td>
-                        <form th:method="delete" th:action="@{|deleteservice/${service.getId()}|}">
+                        <form sec:authorize="hasAnyAuthority('ADMIN')"
+                              th:method="delete" th:action="@{|deleteservice/${service.getId()}|}">
                             <input type="submit" value="Delete" class="btn btn-danger" />
                         </form>
-                        <form th:method="get" th:action="@{|updateservice/${service.getId()}|}">
+                        <form sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')"
+                              th:method="get" th:action="@{|updateservice/${service.getId()}|}">
                             <input type="submit" value="Update" class="btn btn-warning" />
                         </form>
                     </td>

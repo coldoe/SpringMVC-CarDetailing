@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" lang="en">
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      lang="en">
 <head>
     <meta charset="UTF-8">
     <title>GET ALL CARS</title>
@@ -13,7 +15,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-sm-12">
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                 <tr>
                     <th class="text-center" scope="col">ID CLIENT</th>
@@ -22,7 +24,7 @@
                     <th class="text-center" scope="col">YEAR</th>
                     <th class="text-center" scope="col">CLIENT</th>
                     <th class="text-center" scope="col">CLIENT NUMBER</th>
-                    <th class="text-center" scope="col">Actions</th>
+                    <th sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')" class="text-center" scope="col">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -51,12 +53,14 @@
                         <span th:if="${car.getClient()}" th:text="${car.client.contactNumber}"></span>
                         <span th:if="${car.getClient() == null}">No number</span>
                     </td>
-                    <td>
-                        <form th:method="get" th:action="@{|updatecar/${car.Id}|}">
+                    <td sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')">
+                        <form sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')" th:method="get"
+                              th:action="@{|updatecar/${car.Id}|}">
                             <input type="submit" value="Update" class="btn btn-warning" />
                         </form>
 
-                        <form th:method="delete" th:action="@{|deletecar/${car.Id}|}">
+                        <form sec:authorize="hasAnyAuthority('ADMIN')"
+                              th:method="delete" th:action="@{|deletecar/${car.Id}|}">
                             <input type="submit" value="Delete" class="btn btn-danger" />
                         </form>
                     </td>

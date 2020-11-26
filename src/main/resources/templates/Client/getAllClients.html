@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" lang="en">
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      lang="en">
 <head>
     <meta charset="UTF-8">
     <title>GET ALL CLIENTS</title>
@@ -21,7 +23,8 @@
                     <th class="text-center" scope="col">CONTACT NUMBER</th>
                     <th class="text-center" scope="col">CAR</th>
                     <th class="text-center" scope="col">CAR YEAR</th>
-                    <th class="text-center" scope="col" style="width: 30%">ACTIONS</th>
+                    <th sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')"
+                        class="text-center" scope="col" style="width: 30%">ACTIONS</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -48,14 +51,16 @@
                         <span th:if="${client.getCar() == null}">No car</span>
                     </td>
                     <td>
-                        <div class="container">
+                        <div sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')" class="container">
                             <div class="row justify-content-around">
-                                <div class="col-sm-md-12-lg-6-xl-6">
+                                <div sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')"
+                                     class="col-sm-md-12-lg-6-xl-6">
                                     <form th:method="get" th:action="@{/api/client/updateclient/} + ${client.Id}">
                                         <input type="submit" value="Edit Client" class="btn btn-warning" />
                                     </form>
                                 </div>
-                                <div class="col-sm-md-12-lg-6-xl-6 mt-2 mt-sm-2 mt-md-2 mt-lg-0 mt-xl-0">
+                                <div sec:authorize="hasAnyAuthority('ADMIN')"
+                                     class="col-sm-md-12-lg-6-xl-6 mt-2 mt-sm-2 mt-md-2 mt-lg-0 mt-xl-0">
                                     <form th:method="delete" th:action="@{/api/client/deleteclient/} + ${client.Id}">
                                         <input type="submit" value="Delete Client" class="btn btn-danger" />
                                     </form>
@@ -63,7 +68,8 @@
                             </div>
 
                             <div class="row justify-content-around" style="margin-top: 7px;">
-                                <div class="col-sm-md-12-lg-5-xl-5 mr-1 mr-sm-1 mr-md-1 mr-lg-0 mr-xl-0">
+                                <div sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')"
+                                     class="col-sm-md-12-lg-5-xl-5 mr-1 mr-sm-1 mr-md-1 mr-lg-0 mr-xl-0">
                                     <span th:if="${client.getCar() != null}">
                                         <form th:method="get" th:action="@{/api/car/updatecar/} + ${client.car.Id}">
                                             <input type="submit" value="Edit Car" class="btn btn-warning"/>
@@ -73,7 +79,8 @@
                                         <span>-</span>
                                     </span>
                                 </div>
-                                <div class="col-sm-md-12-lg-6-xl-6 mt-2 mt-sm-2 mt-md-2 mt-lg-0 mt-xl-0">
+                                <div sec:authorize="hasAnyAuthority('ADMIN')"
+                                     class="col-sm-md-12-lg-6-xl-6 mt-2 mt-sm-2 mt-md-2 mt-lg-0 mt-xl-0">
                                     <span th:if="${client.getCar() != null}">
                                         <form th:method="delete" th:action="@{/api/car/deletecar/} + ${client.car.Id}">
                                             <input type="submit" value="Delete Car" class="btn btn-danger" />
