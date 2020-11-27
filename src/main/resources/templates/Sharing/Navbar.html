@@ -27,7 +27,7 @@
                 <a class="nav-link dropdown-toggle text-center" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Car
                 </a>
-                <div class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/api/car/getallcars">Show All Cars</a>
                     <a class="dropdown-item" href="/api/car/addcar">Add New Car</a>
                 </div>
@@ -37,7 +37,7 @@
                 <a class="nav-link dropdown-toggle text-center" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Client
                 </a>
-                <div class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/api/client/getallclients">Show All Clients</a>
                     <a class="dropdown-item" href="/api/client/addclient">Add New Client</a>
                     <a class="dropdown-item" href="/api/client/assigncartoclient">Assign Car To Client</a>
@@ -48,7 +48,7 @@
                 <a class="nav-link dropdown-toggle text-center" href="#" id="navbarDropdownMenuLink3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Order
                 </a>
-                <div class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/api/order/getallorders">Show All Orders</a>
                     <a sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')"
                        class="dropdown-item" href="/api/order/addorder">Add New Order</a>
@@ -59,7 +59,7 @@
                 <a class="nav-link dropdown-toggle text-center" href="#" id="navbarDropdownMenuLink4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Services
                 </a>
-                <div class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/api/service/getallservices">Show All Services</a>
                     <a class="dropdown-item" href="/api/service/addservice">Add New Service</a>
                 </div>
@@ -69,7 +69,7 @@
                 <a class="nav-link dropdown-toggle text-center" href="#" id="navbarDropdownMenuLink5" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Workers
                 </a>
-                <div class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/api/worker/getallworkers">Show All Worker</a>
                     <a class="dropdown-item" href="/api/worker/addworker">Add New Worker</a>
                     <a class="dropdown-item" href="/api/worker/assignwork">Assign work</a>

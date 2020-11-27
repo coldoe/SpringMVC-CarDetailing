@@ -7,9 +7,38 @@
     <meta charset="UTF-8">
     <title>Home D&D</title>
     <div th:replace="Sharing/sharingBootStrap"></div>
+    <link th:href="@{/css/home.css}" rel="stylesheet" />
 </head>
 <body>
 <div th:insert="Sharing/Navbar"></div>
+
+<header>
+    <div class="overlay"></div>
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <source th:src="@{/videos/detailing.mp4}" type="video/mp4">
+    </video>
+    <div class="container h-100">
+        <div class="d-flex h-100 text-center align-items-center">
+            <div class="w-100 text-white">
+                <h1 class="display-3">D&D Company</h1>
+                <p class="lead mb-0">Detailing is our passion</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="my-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <p>Proin mi libero, dignissim vel justo id, accumsan bibendum mauris. Donec aliquet, mauris id aliquet mollis, neque turpis dignissim libero, eu commodo urna nisi eu enim. Ut neque massa, consequat at purus a, interdum lobortis felis. Integer in ultricies velit. Proin sagittis nec arcu in posuere. Curabitur luctus risus enim, sit amet aliquet mi porta sit amet. Pellentesque rutrum vel risus non auctor. Sed lobortis tempor risus, sit amet faucibus nunc pretium eget. Nunc pretium scelerisque augue, sit amet viverra dolor vehicula quis. Donec consequat dapibus laoreet. Quisque vel congue urna. Nullam vulputate erat at varius congue. Nam venenatis pretium magna sit amet tincidunt.
+
+                    Nam mollis massa vel faucibus feugiat. Fusce quis dolor facilisis, finibus turpis et, rhoncus lorem. Pellentesque pretium libero vel turpis convallis ornare. Nullam placerat finibus porttitor. Etiam iaculis consequat metus vitae posuere. Nam vel lacus nunc. Sed neque sem, fringilla auctor euismod et, dictum eget leo. Donec in lacus non libero hendrerit convallis. Nam eget nunc massa.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <div th:replace="Sharing/sharingBootStrapBody"></div>
 
 </body>
