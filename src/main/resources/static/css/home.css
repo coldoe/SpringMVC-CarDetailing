@@ -49,6 +49,7 @@ header .overlay {
 
 #underCompanySign{
  font-family: 'Pinyon Script', cursive;
+ text-decoration: underline;
  font-size: 5vh;
 }
 
