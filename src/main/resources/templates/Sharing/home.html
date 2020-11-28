@@ -7,9 +7,69 @@
     <meta charset="UTF-8">
     <title>Home D&D</title>
     <div th:replace="Sharing/sharingBootStrap"></div>
+    <link th:href="@{/css/home.css}" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="main">
 <div th:insert="Sharing/Navbar"></div>
+
+<header>
+    <div class="overlay"></div>
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <source th:src="@{/videos/detailing.mp4}" type="video/mp4">
+    </video>
+    <div class="container h-100">
+        <div class="d-flex h-100 text-center align-items-center">
+            <div class="w-100 text-white">
+                <h1 class="display-3" id="companySign">D&D Company</h1>
+                <p class="lead mb-0" id="underCompanySign">Detailing is our passion</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="my-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+                <h1 class="text-center">Detailing</h1>
+                <p style="font-size:2vh">Kosmetyka samochodowa, auto detailing, car detailing - niezależnie od nazwy
+                    - jest to nasza specjalność. Czyste, zabezpieczone przed brudem i warunkami
+                    atmosferycznymi auto, to coś do czego dążymy. Nie ważne, czy jest to auto zabytkowe,
+                    czy praktycznie nowe, prosto z salonu. Nie ważne, czy chodzi o tapicerkę i plastiki w
+                    środku, czy o lakier i alufelgi. Jesteśmy w tym profesjonalistami. Mamy ogromne
+                    doświadczenie w auto detailingu, które zebraliśmy na Białostockim rynku motoryzacyjnym.
+                    W zależności od kondycji samochodu oraz oczekiwań klienta podchodzimy do zlecenia zawsze
+                    w 100% indywidualnie. Wachlarz naszych usług jest bardzo szeroki oraz stale rozwijany,
+                    po to aby sprostać Twoim oczekiwaniom</p>
+
+                <h1 class="text-center">Firma</h1>
+                <p style="font-size:2vh">Kosmetyka samochodowa, auto detailing, car detailing - niezależnie od nazwy
+                    - jest to nasza specjalność. Czyste, zabezpieczone przed brudem i warunkami
+                    atmosferycznymi auto, to coś do czego dążymy. Nie ważne, czy jest to auto zabytkowe,
+                    czy praktycznie nowe, prosto z salonu. Nie ważne, czy chodzi o tapicerkę i plastiki w
+                    środku, czy o lakier i alufelgi. Jesteśmy w tym profesjonalistami. Mamy ogromne
+                    doświadczenie w auto detailingu, które zebraliśmy na Białostockim rynku motoryzacyjnym.
+                    W zależności od kondycji samochodu oraz oczekiwań klienta podchodzimy do zlecenia zawsze
+                    w 100% indywidualnie. Wachlarz naszych usług jest bardzo szeroki oraz stale rozwijany,
+                    po to aby sprostać Twoim oczekiwaniom</p>
+
+                <h1 class="text-center">Kadra</h1>
+                <p style="font-size:2vh">Kosmetyka samochodowa, auto detailing, car detailing - niezależnie od nazwy
+                    - jest to nasza specjalność. Czyste, zabezpieczone przed brudem i warunkami
+                    atmosferycznymi auto, to coś do czego dążymy. Nie ważne, czy jest to auto zabytkowe,
+                    czy praktycznie nowe, prosto z salonu. Nie ważne, czy chodzi o tapicerkę i plastiki w
+                    środku, czy o lakier i alufelgi. Jesteśmy w tym profesjonalistami. Mamy ogromne
+                    doświadczenie w auto detailingu, które zebraliśmy na Białostockim rynku motoryzacyjnym.
+                    W zależności od kondycji samochodu oraz oczekiwań klienta podchodzimy do zlecenia zawsze
+                    w 100% indywidualnie. Wachlarz naszych usług jest bardzo szeroki oraz stale rozwijany,
+                    po to aby sprostać Twoim oczekiwaniom</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <div th:replace="Sharing/sharingBootStrapBody"></div>
 
 </body>
