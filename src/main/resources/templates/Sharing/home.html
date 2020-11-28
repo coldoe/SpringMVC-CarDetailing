@@ -8,8 +8,10 @@
     <title>Home D&D</title>
     <div th:replace="Sharing/sharingBootStrap"></div>
     <link th:href="@{/css/home.css}" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="main">
 <div th:insert="Sharing/Navbar"></div>
 
 <header>
@@ -20,8 +22,8 @@
     <div class="container h-100">
         <div class="d-flex h-100 text-center align-items-center">
             <div class="w-100 text-white">
-                <h1 class="display-3">D&D Company</h1>
-                <p class="lead mb-0">Detailing is our passion</p>
+                <h1 class="display-3" id="companySign">D&D Company</h1>
+                <p class="lead mb-0" id="underCompanySign">Detailing is our passion</p>
             </div>
         </div>
     </div>
@@ -30,10 +32,39 @@
 <section class="my-5">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 mx-auto">
-                <p>Proin mi libero, dignissim vel justo id, accumsan bibendum mauris. Donec aliquet, mauris id aliquet mollis, neque turpis dignissim libero, eu commodo urna nisi eu enim. Ut neque massa, consequat at purus a, interdum lobortis felis. Integer in ultricies velit. Proin sagittis nec arcu in posuere. Curabitur luctus risus enim, sit amet aliquet mi porta sit amet. Pellentesque rutrum vel risus non auctor. Sed lobortis tempor risus, sit amet faucibus nunc pretium eget. Nunc pretium scelerisque augue, sit amet viverra dolor vehicula quis. Donec consequat dapibus laoreet. Quisque vel congue urna. Nullam vulputate erat at varius congue. Nam venenatis pretium magna sit amet tincidunt.
+            <div class="col-md-10 mx-auto">
+                <h1 class="text-center">Detailing</h1>
+                <p style="font-size:2vh">Kosmetyka samochodowa, auto detailing, car detailing - niezależnie od nazwy
+                    - jest to nasza specjalność. Czyste, zabezpieczone przed brudem i warunkami
+                    atmosferycznymi auto, to coś do czego dążymy. Nie ważne, czy jest to auto zabytkowe,
+                    czy praktycznie nowe, prosto z salonu. Nie ważne, czy chodzi o tapicerkę i plastiki w
+                    środku, czy o lakier i alufelgi. Jesteśmy w tym profesjonalistami. Mamy ogromne
+                    doświadczenie w auto detailingu, które zebraliśmy na Białostockim rynku motoryzacyjnym.
+                    W zależności od kondycji samochodu oraz oczekiwań klienta podchodzimy do zlecenia zawsze
+                    w 100% indywidualnie. Wachlarz naszych usług jest bardzo szeroki oraz stale rozwijany,
+                    po to aby sprostać Twoim oczekiwaniom</p>
 
-                    Nam mollis massa vel faucibus feugiat. Fusce quis dolor facilisis, finibus turpis et, rhoncus lorem. Pellentesque pretium libero vel turpis convallis ornare. Nullam placerat finibus porttitor. Etiam iaculis consequat metus vitae posuere. Nam vel lacus nunc. Sed neque sem, fringilla auctor euismod et, dictum eget leo. Donec in lacus non libero hendrerit convallis. Nam eget nunc massa.</p>
+                <h1 class="text-center">Firma</h1>
+                <p style="font-size:2vh">Kosmetyka samochodowa, auto detailing, car detailing - niezależnie od nazwy
+                    - jest to nasza specjalność. Czyste, zabezpieczone przed brudem i warunkami
+                    atmosferycznymi auto, to coś do czego dążymy. Nie ważne, czy jest to auto zabytkowe,
+                    czy praktycznie nowe, prosto z salonu. Nie ważne, czy chodzi o tapicerkę i plastiki w
+                    środku, czy o lakier i alufelgi. Jesteśmy w tym profesjonalistami. Mamy ogromne
+                    doświadczenie w auto detailingu, które zebraliśmy na Białostockim rynku motoryzacyjnym.
+                    W zależności od kondycji samochodu oraz oczekiwań klienta podchodzimy do zlecenia zawsze
+                    w 100% indywidualnie. Wachlarz naszych usług jest bardzo szeroki oraz stale rozwijany,
+                    po to aby sprostać Twoim oczekiwaniom</p>
+
+                <h1 class="text-center">Kadra</h1>
+                <p style="font-size:2vh">Kosmetyka samochodowa, auto detailing, car detailing - niezależnie od nazwy
+                    - jest to nasza specjalność. Czyste, zabezpieczone przed brudem i warunkami
+                    atmosferycznymi auto, to coś do czego dążymy. Nie ważne, czy jest to auto zabytkowe,
+                    czy praktycznie nowe, prosto z salonu. Nie ważne, czy chodzi o tapicerkę i plastiki w
+                    środku, czy o lakier i alufelgi. Jesteśmy w tym profesjonalistami. Mamy ogromne
+                    doświadczenie w auto detailingu, które zebraliśmy na Białostockim rynku motoryzacyjnym.
+                    W zależności od kondycji samochodu oraz oczekiwań klienta podchodzimy do zlecenia zawsze
+                    w 100% indywidualnie. Wachlarz naszych usług jest bardzo szeroki oraz stale rozwijany,
+                    po to aby sprostać Twoim oczekiwaniom</p>
             </div>
         </div>
     </div>

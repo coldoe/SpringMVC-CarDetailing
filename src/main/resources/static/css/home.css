@@ -1,7 +1,11 @@
+.main::-webkit-scrollbar {
+  display: none;
+}
+
 header {
   position: relative;
   background-color: black;
-  height: 75vh;
+  height: 95vh;
   min-height: 25rem;
   width: 100%;
   overflow: hidden;
@@ -37,4 +41,15 @@ header .overlay {
   opacity: 0.5;
   z-index: 1;
 }
+
+#companySign{
+ font-family: 'Pinyon Script', cursive;
+ font-size: 20vh;
+ }
+
+#underCompanySign{
+ font-family: 'Pinyon Script', cursive;
+ font-size: 5vh;
+}
+
 
