@@ -53,4 +53,16 @@ header .overlay {
  font-size: 5vh;
 }
 
+@media (pointer: coarse) and (hover: none) {
+  #companySign{
+   font-size: 10vh;
+   }
 
+  #underCompanySign{
+   font-size: 3vh;
+  }
+
+  header {
+    height: 40vh;
+  }
+}

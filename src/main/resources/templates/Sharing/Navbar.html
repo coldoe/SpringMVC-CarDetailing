@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" sec:authorize="isAnonymous()">
-                <a class="nav-link text-center" href="/login">LOGIN</a>
+                <a class="nav-link text-center" href="/login">Login</a>
             </li>
 
             <li sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')" class="nav-item dropdown">
@@ -83,7 +83,7 @@
             </li>
 
             <li class="nav-item"  sec:authorize="isAuthenticated()">
-                <a class="nav-link text-center" href="/logout">LOGOUT</a>
+                <a class="nav-link text-center" href="/logout">Logout</a>
             </li>
 
         </ul>
