@@ -44,8 +44,7 @@
                     <a class="dropdown-item" href="/api/order/getallorders">Show All Orders</a>
                     <a sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')"
                        class="dropdown-item" href="/api/order/addorder">Add New Order</a>
-                    <a sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')"
-                       class="dropdown-item" href="/api/order/showordersnotpayeornotdone">Not completed</a>
+                    <a class="dropdown-item" href="/api/order/showordersnotpayeornotdone">Not completed</a>
                 </div>
             </li>
 
@@ -59,14 +58,16 @@
                 </div>
             </li>
 
-            <li sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')" class="nav-item dropdown">
+            <li sec:authorize="hasAnyAuthority('ADMIN','MODERATOR','WORKER')" class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-center" href="#" id="navbarDropdownMenuLink5" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Workers
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/api/worker/getallworkers">Show All Worker</a>
-                    <a class="dropdown-item" href="/api/worker/addworker">Add New Worker</a>
-                    <a class="dropdown-item" href="/api/worker/assignwork">Assign work</a>
+                    <a sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')"
+                       class="dropdown-item" href="/api/worker/addworker">Add New Worker</a>
+                    <a sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')"
+                       class="dropdown-item" href="/api/worker/assignwork">Assign work</a>
                 </div>
             </li>
 
