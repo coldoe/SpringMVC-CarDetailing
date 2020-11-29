@@ -3,6 +3,7 @@ package com.kamiltest.demo.manager;
 import com.kamiltest.demo.doa.Repo.ClientRepo;
 import com.kamiltest.demo.doa.model.Car;
 import com.kamiltest.demo.doa.model.Client;
+import com.kamiltest.demo.doa.model.Order;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.stream.StreamSupport;
 public class ClientManager {
     private ClientRepo clientRepo;
     private CarManager carManager;
+    private OrderManager orderManager;
 
     public ClientManager(ClientRepo clientRepo, CarManager carManager) {
         this.clientRepo = clientRepo;
@@ -34,6 +36,13 @@ public class ClientManager {
     }
 
     public void delete(Long id){
+        Iterable <Order> orderToDelete = this.orderManager.findAll();
+        StreamSupport.stream(orderToDelete.spliterator(),false)
+                .filter(o -> o.getId() != id)
+                .collect(Collectors.toList());
+        for (Order order:orderToDelete) {
+            this.orderManager.deleteOrderById(order.getId());
+        }
         this.clientRepo.deleteById(id);
     }
 

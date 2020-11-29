@@ -27,6 +27,7 @@
                         <input type="text" class="form-control"  placeholder="Contact Number" th:field="*{contactNumber}">
                         <span class="text-danger" th:errors="*{contactNumber}"></span>
                     </div>
+                        <input id="id" th:field="*{car}" type="hidden"/>
                     <button type="submit" class="btn btn-primary">Update Client</button>
                 </form>
             </div>
