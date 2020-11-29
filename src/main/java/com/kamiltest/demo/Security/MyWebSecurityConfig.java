@@ -53,6 +53,7 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .antMatchers("/api/order/addorder").hasAnyAuthority("ADMIN","MODERATOR")
                 .antMatchers("/api/order/getallorders").hasAnyAuthority("ADMIN","MODERATOR","WORKER")
+                .antMatchers("/api/order/showordersnotpayeornotdone").hasAnyAuthority("ADMIN","MODERATOR","WORKER")
                 .antMatchers("/api/order/getspecificorder/client/**").hasAnyAuthority("ADMIN","MODERATOR")
                 .antMatchers("/api/order/getspecificorder/worker/**").hasAnyAuthority("ADMIN","WORKER")
                 .antMatchers("/api/order/setboolean/done/**").hasAnyAuthority("ADMIN","WORKER")
@@ -71,6 +72,7 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/worker/updateworker/**").hasAnyAuthority("ADMIN","MODERATOR")
                 .antMatchers("/api/worker/deleteworker/**").hasAnyAuthority("ADMIN")
                 .antMatchers("/api/worker/assignwork").hasAnyAuthority("ADMIN","MODERATOR")
+                .antMatchers("/api/worker/checkorders/**").hasAnyAuthority("ADMIN","MODERATOR","WORKER")
 
                 .antMatchers("/api/user/**").hasAnyAuthority("ADMIN")
 

@@ -122,4 +122,15 @@ public class WorkerController {
         }
         return "redirect:/api/worker/getallworkers";
     }
+
+    @GetMapping("/checkorders/{id}")
+    public String checkAllOrderForWorkerThatAreNotDone(Model model,@PathVariable Long id)
+    {
+        if(id != null)
+        {
+            model.addAttribute("orders",this.workerManager.getOrdersNotDoneForSpecificWorker(id));
+            return "Worker/checkOrders";
+        }
+        return "redirect:/api/worker/getallworkers";
+    }
 }
