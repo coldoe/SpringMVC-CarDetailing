@@ -53,8 +53,11 @@
                         <span  th:text="${#calendars.format(worker.getUtilCalendar(),'dd-MM-yyyy')}"></span>
                     </td>
                     <td>
-                        <span th:if="${worker.ordersToDo != null && worker.countOrders() > 0}" th:text="${worker.countOrders()}"></span>
-                        <span th:if="${worker.ordersToDo == null || worker.countOrders() == 0}">No tasks</span>
+                        <span th:if="${worker.ordersToDo != null && worker.countOrdersNotDone() > 0}" th:text="${worker.countOrders()}"></span>
+                        <span th:if="${worker.ordersToDo == null || worker.countOrdersNotDone() == 0}">No tasks</span>
+                        <form th:method="get" th:action="@{|updateworker/${worker.getId()}|}">
+                            <input type="submit" value="Check orders" class="btn btn-warning" />
+                        </form>
                     </td>
                     <td>
                         <form sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')"

@@ -122,4 +122,13 @@ public class WorkerController {
         }
         return "redirect:/api/worker/getallworkers";
     }
+
+//    @GetMapping("/checkorders")
+//    public String checkAllOrderForWorkerThatAreNotDone(Model model)
+//    {
+//        model.addAttribute("viewmodel",new OrderAssignToWorker());
+//        model.addAttribute("workers",this.workerManager.findAll());
+//        model.addAttribute("orders",this.orderManager.getAllOrdersNotAssignToWorker());
+//        return "Worker/assignOrderToWorker";
+//    }
 }
