@@ -36,6 +36,7 @@
                 <div class="form-group">
                     <input type="hidden" th:field="${workerToUpdate.utilCalendar}">
                 </div>
+                <input id="id" th:field="*{ordersToDo}" type="hidden"/>
                 <button type="submit" class="btn btn-primary">Update Worker</button>
             </form>
         </div>

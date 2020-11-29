@@ -4,7 +4,7 @@ import com.kamiltest.demo.doa.model.Client;
 import com.kamiltest.demo.doa.viewModels.viewModelCarClient;
 import com.kamiltest.demo.manager.CarManager;
 import com.kamiltest.demo.manager.ClientManager;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.kamiltest.demo.manager.OrderManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,11 +18,12 @@ import java.util.Optional;
 public class ClientController {
     private ClientManager clientManager;
     private CarManager carManager;
+    private OrderManager orderManager;
 
-    @Autowired
-    public ClientController(ClientManager clientManager, CarManager carManager) {
+    public ClientController(ClientManager clientManager, CarManager carManager, OrderManager orderManager) {
         this.clientManager = clientManager;
         this.carManager = carManager;
+        this.orderManager = orderManager;
     }
 
     @GetMapping("/getallclients")
@@ -30,11 +31,6 @@ public class ClientController {
         model.addAttribute("clients",this.clientManager.findAll());
         return "Client/getAllClients";
     }
-
-//    @GetMapping("/getbyid")
-//    public Optional<Client> GetById(@RequestParam Long index){
-//        return this.clientManager.findById(index);
-//    }
 
     @GetMapping("/updateclient/{id}")
     public String updateClient(@PathVariable Long id, Model model){
