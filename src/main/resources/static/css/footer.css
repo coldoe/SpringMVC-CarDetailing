@@ -1,7 +1,21 @@
+body{
+position: relative;
+  min-height: 100vh;
+}
+
+.copyright-wraper{
+    padding-bottom: 80px;
+}
+
 .copyright {
   padding: 28px 0;
-  margin-top: 55px;
-  background-color: #000000; }
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+  background-color: #000000;
+ }
+
   .copyright span,
   .copyright a {
     color: #878787;
@@ -18,3 +32,11 @@
 .copyright-menu li {
   display: inline-block;
   padding-left: 20px; }
+
+/* Set the size of the div element that contains the map */
+#map {
+  height: 400px;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */
+}
