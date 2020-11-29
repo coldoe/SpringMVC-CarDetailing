@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Controller
 @RequestMapping("/api/order")
@@ -115,5 +117,15 @@ public class OrderController {
             this.orderManager.deleteOrderById(id);
         }
         return "redirect:/api/order/getallorders";
+    }
+
+    @GetMapping("/showordersnotpayeornotdone")
+    public String showOrdersNotPayedOrNotDone(Model model)
+    {
+        model.addAttribute("orders",
+                StreamSupport.stream(this.orderManager.findAll().spliterator(),false)
+                        .filter(o -> !o.getisDone() || !o.getisPayed())
+                        .collect(Collectors.toList()));
+        return "Order/getAllOrdersNotPayedOrNotDone";
     }
 }

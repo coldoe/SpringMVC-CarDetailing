@@ -123,12 +123,14 @@ public class WorkerController {
         return "redirect:/api/worker/getallworkers";
     }
 
-//    @GetMapping("/checkorders")
-//    public String checkAllOrderForWorkerThatAreNotDone(Model model)
-//    {
-//        model.addAttribute("viewmodel",new OrderAssignToWorker());
-//        model.addAttribute("workers",this.workerManager.findAll());
-//        model.addAttribute("orders",this.orderManager.getAllOrdersNotAssignToWorker());
-//        return "Worker/assignOrderToWorker";
-//    }
+    @GetMapping("/checkorders/{id}")
+    public String checkAllOrderForWorkerThatAreNotDone(Model model,@PathVariable Long id)
+    {
+        if(id != null)
+        {
+            model.addAttribute("orders",this.workerManager.getOrdersNotDoneForSpecificWorker(id));
+            return "Worker/checkOrders";
+        }
+        return "redirect:/api/worker/getallworkers";
+    }
 }

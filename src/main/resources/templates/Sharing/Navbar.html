@@ -44,6 +44,8 @@
                     <a class="dropdown-item" href="/api/order/getallorders">Show All Orders</a>
                     <a sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')"
                        class="dropdown-item" href="/api/order/addorder">Add New Order</a>
+                    <a sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')"
+                       class="dropdown-item" href="/api/order/showordersnotpayeornotdone">Not completed</a>
                 </div>
             </li>
 

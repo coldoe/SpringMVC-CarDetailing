@@ -9,6 +9,8 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class WorkerManager {
@@ -46,6 +48,24 @@ public class WorkerManager {
         }
         return false;
     }
+    public Iterable<Order> getOrdersNotDoneForSpecificWorker(Long idWorker)
+    {
+        if(idWorker != null)
+        {
+            Optional<Worker> worker = this.workerRepo.findById(idWorker);
+            if(worker.isPresent())
+            {
+                Set<Order> ordersNotDone = worker.get().getOrdersToDo();
+                ordersNotDone = ordersNotDone.stream()
+                        .filter(o -> !o.getisDone())
+                        .collect(Collectors.toSet());
+                return ordersNotDone;
+            }
+        }
+        return null;
+    }
+
+
     @EventListener(ApplicationReadyEvent.class)
     public void fillDb(){
         //    e.setUtilCalendar(new GregorianCalendar(2019, 6, 18));
