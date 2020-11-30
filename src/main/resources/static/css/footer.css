@@ -1,6 +1,7 @@
 body{
 position: relative;
   min-height: 100vh;
+  color: #202020;
 }
 
 .copyright-wraper{
@@ -13,7 +14,7 @@ position: relative;
     bottom: 0;
     width: 100%;
     height: 80px;
-  background-color: #000000;
+  background-color: #202020;
  }
 
   .copyright span,
@@ -26,12 +27,12 @@ position: relative;
     color:#ffffff; }
 
 .copyright-menu ul {
-  text-align: right;
-  margin: 0; }
+  margin: 0;
+   padding:0 28px;}
 
 .copyright-menu li {
   display: inline-block;
-  padding-left: 20px; }
+}
 
 /* Set the size of the div element that contains the map */
 #map {
@@ -40,3 +41,15 @@ position: relative;
   width: 100%;
   /* The width is the width of the web page */
 }
+
+.navbar-custom{
+    background-color: #202020;
+}
+
+.navbar-custom .navbar-text {
+    color: #FFFFFF;
+}
+
+.navbar-nav > li > .dropdown-menu { background-color: #FFDF6C; }
+
+.navbar-nav > li > .dropdown-menu a:hover { background-color: #ebcd65; }

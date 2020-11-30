@@ -15,8 +15,8 @@ header video {
   position: absolute;
   top: 50%;
   left: 50%;
-  min-width: 100%;
-  min-height: 100%;
+  min-width: 180%;
+  min-height: 180%;
   width: auto;
   height: auto;
   z-index: 0;
@@ -24,6 +24,7 @@ header video {
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
+  filter: blur(4px);
 }
 
 header .container {
@@ -43,26 +44,42 @@ header .overlay {
 }
 
 #companySign{
- font-family: 'Pinyon Script', cursive;
- font-size: 20vh;
+    font-size: 120px;
+    font-family: 'Pinyon Script', cursive;
  }
 
 #underCompanySign{
- font-family: 'Pinyon Script', cursive;
- text-decoration: underline;
- font-size: 5vh;
+    font-size: 40px;
+    color: #999999;
 }
 
 @media (pointer: coarse) and (hover: none) {
   #companySign{
-   font-size: 10vh;
+   font-size: 60px;
    }
 
   #underCompanySign{
-   font-size: 3vh;
+   font-size: 30px;
   }
 
-  header {
-    height: 40vh;
+ header {
+    height: 95vh;
   }
 }
+
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+.fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+}
+
+h1, h4{
+  text-decoration: underline;
+  text-decoration-color: #FFDF6C;
+  }
