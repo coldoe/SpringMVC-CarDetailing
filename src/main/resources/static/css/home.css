@@ -79,7 +79,7 @@ header .overlay {
     min-height: 100%
 }
 
-h1{
+h1, h4{
   text-decoration: underline;
   text-decoration-color: #FFDF6C;
   }
