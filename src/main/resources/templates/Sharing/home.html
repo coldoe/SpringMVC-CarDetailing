@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Home D&D</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <div th:replace="Sharing/sharingBootStrap"></div>
     <link th:href="@{/css/home.css}" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -22,47 +23,78 @@
     <div class="container h-100">
         <div class="d-flex h-100 text-center align-items-center">
             <div class="w-100 text-white">
-                <h1 class="display-3" id="companySign">D&D Company</h1>
-                <p class="lead mb-0" id="underCompanySign">Detailing is our passion</p>
+                <h2 class="display-3" id="companySign">D&D Company</h2>
+                <h4 class="lead mb-0" id="underCompanySign">Detailing is our passion</h4>
             </div>
         </div>
     </div>
 </header>
 
-<section class="my-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-20 mx-auto">
-                <div class="shadow bg-light text-dark rounded-lg">
-                <h1 class="text-center">Detailing</h1>
-                <img th:src="@{/photos/foam.jpg}" width="100%"/>
-                <p class="p-3 text-justify" style="font-size:2vh">Kosmetyka samochodowa, auto detailing, car detailing - niezależnie od nazwy
-                    - jest to nasza specjalność. Czyste, zabezpieczone przed brudem i warunkami
-                    atmosferycznymi auto, to coś do czego dążymy. Nie ważne, czy jest to auto zabytkowe,
-                    czy praktycznie nowe, prosto z salonu. Nie ważne, czy chodzi o tapicerkę i plastiki w
-                    środku, czy o lakier i alufelgi. Jesteśmy w tym profesjonalistami. Mamy ogromne
-                    doświadczenie w auto detailingu, które zebraliśmy na Białostockim rynku motoryzacyjnym.
-                    W zależności od kondycji samochodu oraz oczekiwań klienta podchodzimy do zlecenia zawsze
-                    w 100% indywidualnie. Wachlarz naszych usług jest bardzo szeroki oraz stale rozwijany,
-                    po to aby sprostać Twoim oczekiwaniom.</p>
+<div class="container-fluid">
+            <div class="row topmargin-sm bottommargin-sm clearfix">
+
+                <div class="col-md-6 p-0">
+                    <div class="fill">
+                    <img th:src="@{/photos/foam.jpg}"/>
+                    </div>
                 </div>
-                <div class="shadow bg-light text-dark rounded-lg">
-                <h1 class="text-center">Firma</h1>
-                <img th:src="@{/photos/headquarters.jpg}" width="100%"/>
-                <p class="p-3 text-justify" style="font-size:2vh">Firma powstała w 2014 roku, pomysł zrodził się z pasji do pracy przy motoryzacji.
-                    Wcześniej pracowaliśmy przy swoich autach czy w wąskiej grupie znajomych.
-                    Od początku mocno stawiamy na rozwój naszych umiejętności.
-                    Na początku mogliśmy zaoferować ograniczony zakres usług, aktualnie mamy najszerszą ofertę na Podlasiu.</p>
+                <div class="col-md-6 pd-5 my-auto">
+                    <h1 class="text-center">About us</h1>
+                    <p class="p-3 text-justify lead">JR DETAILING has been responsible for detailing over 1,000 prestige
+                        vehicles across East Anglia in the last 7 years. Together with a solid track record in the detailing
+                        industry, JR Detailing uses only the best paintwork finish products, such as CERAMIC PRO, for which we're
+                        the only authorised detailer in the Norfolk area so you can be assured your vehicle is in expert hands.
+                        CERAMIC PRO authorisation means that the quality of our work has been examined and approved to the highest level, and that we
+                        use only the best detailing products to clean and protect your performance or prestige vehicle.
+                        JR DETAILING is currently located in the historic UK town of Diss. This gives easy access from anywhere in
+                        Norfolk and the local immenities are fantastic, with a train station literally only 2 minutes walk from the unit.</p>
                 </div>
-                <div class="shadow bg-light text-dark rounded-lg">
-                <h1 class="text-center">Kadra</h1>
-                <img th:src="@{/photos/crew.jpeg}" width="100%"/>
-                <p class="p-3 text-justify" style="font-size:2vh">Od A do Z Twoim autem zajmą się profesjonaliści. Nasz zespół jest skromny, ale w zamian posiadający ogromną wiedzą z dziedziny car detailingu.</p>
+
+
+
+                <div class="col-md-6 pd-5 my-auto">
+                    <h1 class="text-center">Ceramic Coat</h1>
+                    <p class="p-3 text-justify lead">A ceramic coating (which it is commonly referred to) is a
+                        liquid chemical which bonds to your vehicle’s paintwork forming a strong, durable protective
+                        layer which is stronger than traditional waxes and sealants. A ceramic coating application as part of a paint correction detail
+                        or new car protection detail will repel water, dirt, road salt and be resistant to harsh detergents and chemicals.</p>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
+                <div class="col-md-6 p-0">
+                    <div class="fill">
+                    <img th:src="@{/photos/ceramic.jpeg}"/>
+                    </div>
+                </div>
+
+                <div class="col-md-6 p-0">
+                    <div class="fill">
+                    <img th:src="@{/photos/new.jpg}"/>
+                    </div>
+                </div>
+                <div class="col-md-6 pd-5 my-auto">
+                    <h1 class="text-center">New Car</h1>
+                    <p class="p-3 text-justify lead">The perfect detailing package for your new car. Includes paint enhancement or correction
+                        (depending on condition) and your choice of wax, sealant or ceramic coating to protect your “better than new” paintwork.
+                        Price: From £450 (depending on vehicle size, paint enhancement or correction requirements & protection package chosen)
+                        Timescale: 1–4 days (This will be discussed with the client if the vehicle needs machine
+                        polishing or not prior to protection)</p>
+                </div>
+
+                <div class="col-md-6 pd-5 my-auto">
+                    <h1 class="text-center">Wash & Maintenance Detail</h1>
+                    <p class="p-3 text-justify lead">This starts with a thorough wash and decontamination of your vehicle.
+                        First the wheels are cleaned with an acid free wheel cleaner and iron deposit remover dissolving brake dust,
+                        road grime and dirt. Soft wheel woolie brushes are used to agitate the first from the inner barrels and the face
+                        of the rim. After this is rinsed clean, a hand wash on each wheel is carried out using a PH neutral shampoo. </p>
+                </div>
+                <div class="col-md-6 p-0">
+                    <div class="fill">
+                        <img th:src="@{/photos/clean.jpg}"/>
+                    </div>
+                </div>
+
+</div>
+</div>
+
 
 <div th:replace="Sharing/sharingBootStrapBody"></div>
 

@@ -5,7 +5,7 @@
 header {
   position: relative;
   background-color: black;
-  height: 95vh;
+  height: 70vh;
   min-height: 25rem;
   width: 100%;
   overflow: hidden;
@@ -43,26 +43,41 @@ header .overlay {
 }
 
 #companySign{
- font-family: 'Pinyon Script', cursive;
- font-size: 20vh;
+    font-size: 140px;
  }
 
 #underCompanySign{
- font-family: 'Pinyon Script', cursive;
- text-decoration: underline;
- font-size: 5vh;
+    font-size: 40px;
+    color: #999999;
 }
 
 @media (pointer: coarse) and (hover: none) {
   #companySign{
-   font-size: 10vh;
+   font-size: 60px;
    }
 
   #underCompanySign{
-   font-size: 3vh;
+   font-size: 30px;
   }
 
-  header {
-    height: 40vh;
+ header {
+    height: 50vh;
   }
 }
+
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+.fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+}
+
+h1{
+  text-decoration: underline;
+  text-decoration-color: #FFDF6C;
+  }
