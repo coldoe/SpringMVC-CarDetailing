@@ -5,7 +5,7 @@
 header {
   position: relative;
   background-color: black;
-  height: 70vh;
+  height: 95vh;
   min-height: 25rem;
   width: 100%;
   overflow: hidden;
@@ -15,8 +15,8 @@ header video {
   position: absolute;
   top: 50%;
   left: 50%;
-  min-width: 100%;
-  min-height: 100%;
+  min-width: 180%;
+  min-height: 180%;
   width: auto;
   height: auto;
   z-index: 0;
@@ -24,6 +24,7 @@ header video {
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
+  filter: blur(4px);
 }
 
 header .container {
@@ -43,7 +44,8 @@ header .overlay {
 }
 
 #companySign{
-    font-size: 140px;
+    font-size: 120px;
+    font-family: 'Pinyon Script', cursive;
  }
 
 #underCompanySign{
@@ -61,7 +63,7 @@ header .overlay {
   }
 
  header {
-    height: 50vh;
+    height: 95vh;
   }
 }
 

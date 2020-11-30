@@ -27,12 +27,12 @@ position: relative;
     color:#ffffff; }
 
 .copyright-menu ul {
-  text-align: right;
-  margin: 0; }
+  margin: 0;
+   padding:0 28px;}
 
 .copyright-menu li {
   display: inline-block;
-  padding-left: 20px; }
+}
 
 /* Set the size of the div element that contains the map */
 #map {
