@@ -29,8 +29,6 @@ Then
 - Password:/<'^^qcyi23+4v%d
 - Then go to the navbar and click "Let's start"
 - Add user with different groups
-- At start RoleService.java is adding 3 roles to database
-- After first run just comment it
 - Have fun and click star on repo <3
 
 TODO:
