@@ -35,6 +35,11 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
+
+        auth.inMemoryAuthentication()
+                .withUser("letsbegin")
+                .password(passwordEncoder().encode("/<'^^qcyi23+4v%d"))
+                .roles("MEMORY");
     }
 
     @Override
@@ -75,6 +80,8 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/worker/checkorders/**").hasAnyAuthority("ADMIN","MODERATOR","WORKER")
 
                 .antMatchers("/api/user/**").hasAnyAuthority("ADMIN")
+
+                .antMatchers("/api/user/**").hasRole("MEMORY")
 
                 .antMatchers("/api/home").permitAll()
 

@@ -15,6 +15,10 @@
                 <a class="nav-link text-center" href="/login">Login</a>
             </li>
 
+            <li class="nav-item" sec:authorize="hasRole('MEMORY')">
+                <a class="nav-link text-center" href="/api/user/adduser">Let's start</a>
+            </li>
+
             <li sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')" class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-center" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Car

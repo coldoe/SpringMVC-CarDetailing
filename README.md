@@ -22,7 +22,15 @@ In case You didnt set Java (using IntelliJ)
 - Open project File => Open => (Look for project and find pom.xml) click ok and then click open as project.
 - Go File => Project Structure => Project SDK and set it to Java 11.
 
+Then
+- go to the http://localhost:8080/api/home
+- login with credentials
+- Username:letsbegin
+- Password:/<'^^qcyi23+4v%d
+- Then go to the navbar and click "Let's start"
+- Add user with different groups
+- Have fun and click star on repo <3
+
 TODO:
-- somehow You need to be able to log in when there are no users in db
-- should add in memory admin something like that
+
 
