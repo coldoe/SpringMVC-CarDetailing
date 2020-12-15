@@ -28,7 +28,7 @@ Then
 - Username:letsbegin
 - Password:/<'^^qcyi23+4v%d
 - Then go to the navbar and click "Let's start"
-- Add user with different groups
+- Add users with different groups
 - Have fun and click star on repo <3
 
 TODO:
