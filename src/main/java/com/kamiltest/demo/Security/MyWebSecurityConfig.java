@@ -79,9 +79,7 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/worker/assignwork").hasAnyAuthority("ADMIN","MODERATOR")
                 .antMatchers("/api/worker/checkorders/**").hasAnyAuthority("ADMIN","MODERATOR","WORKER")
 
-                .antMatchers("/api/user/**").hasAnyAuthority("ADMIN")
-
-                .antMatchers("/api/user/**").hasRole("MEMORY")
+                .antMatchers("/api/user/**").access("hasRole('MEMORY') or hasAnyAuthority('ADMIN')")
 
                 .antMatchers("/api/home").permitAll()
 
