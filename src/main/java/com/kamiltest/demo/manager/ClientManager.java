@@ -4,6 +4,7 @@ import com.kamiltest.demo.doa.Repo.ClientRepo;
 import com.kamiltest.demo.doa.model.Car;
 import com.kamiltest.demo.doa.model.Client;
 import com.kamiltest.demo.doa.model.Order;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,14 +15,14 @@ import java.util.stream.StreamSupport;
 
 @Service
 public class ClientManager {
+    @Autowired
     private ClientRepo clientRepo;
-    private CarManager carManager;
-    private OrderManager orderManager;
 
-    public ClientManager(ClientRepo clientRepo, CarManager carManager) {
-        this.clientRepo = clientRepo;
-        this.carManager = carManager;
-    }
+    @Autowired
+    private CarManager carManager;
+
+    @Autowired
+    private OrderManager orderManager;
 
     public Optional<Client> findById(Long id){
         return this.clientRepo.findById(id);
@@ -46,7 +47,6 @@ public class ClientManager {
         this.clientRepo.deleteById(id);
     }
 
-    //delete Car for client
     public boolean deleteCarForClient(Long idClient){
         try{
             Optional<Client> client = this.findById(idClient);
@@ -65,8 +65,7 @@ public class ClientManager {
             return false;
         }
     }
-    //update car for client
-    //add car for client
+
     public Client updateOrAddCarForClient(Long idClient,Car carToUpdateOrAdd){
         try{
             Optional<Client> client = this.findById(idClient);

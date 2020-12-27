@@ -4,7 +4,6 @@ import com.kamiltest.demo.doa.model.Client;
 import com.kamiltest.demo.doa.viewModels.viewModelCarClient;
 import com.kamiltest.demo.manager.CarManager;
 import com.kamiltest.demo.manager.ClientManager;
-import com.kamiltest.demo.manager.OrderManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,12 +17,10 @@ import java.util.Optional;
 public class ClientController {
     private ClientManager clientManager;
     private CarManager carManager;
-    private OrderManager orderManager;
 
-    public ClientController(ClientManager clientManager, CarManager carManager, OrderManager orderManager) {
+    public ClientController(ClientManager clientManager, CarManager carManager) {
         this.clientManager = clientManager;
         this.carManager = carManager;
-        this.orderManager = orderManager;
     }
 
     @GetMapping("/getallclients")
